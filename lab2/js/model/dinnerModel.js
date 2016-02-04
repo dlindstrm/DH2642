@@ -51,13 +51,12 @@ var DinnerModel = function(id, date, guests) {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		this.removeDishFromMenu(id);
-		var newDish = _find(dishes, function(obj){ return obj.id == id });
-		this.dishes.push(newDish);
+		this.dishes.push(this.getDish(id));
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		_.reject(this.dishes, function(obj){ return obj.id == id });
+		this.dishes = _.reject(this.dishes, function(obj){ return obj.id == id });
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
