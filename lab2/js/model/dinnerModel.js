@@ -19,12 +19,7 @@ var DinnerModel = function(id, date, guests) {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		for(i in this.dishes){
-			if(this.dishes[i].type == type) {
-				return dish;
-			}
-		}
-		return null;
+		return _.find(this.dishes, function(dish){ return dish.type == type; });
 	}
 
 	//Returns all the dishes on the menu.
