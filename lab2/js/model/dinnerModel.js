@@ -50,6 +50,8 @@ var DinnerModel = function(id, date, guests) {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
+		var duplicate = _.filter(this.dishes, function(obj){ return obj.id == id});
+		
 	}
 
 	//Removes dish from menu
