@@ -50,13 +50,14 @@ var DinnerModel = function(id, date, guests) {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		var duplicate = _.filter(this.dishes, function(obj){ return obj.id == id});
-		
+		this.removeDishFromMenu(id);
+		var newDish = _find(dishes, function(obj){ return obj.id == id });
+		this.dishes.push(newDish);
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		_.reject(this.dishes, function(obj){ return obj.id == id });
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
