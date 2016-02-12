@@ -31,15 +31,15 @@
             </div>
           </div>
         </div>
-        <div id="startView" class="page-content" style="display: none;">
+        <div id="startView" class="page-content">
           <div class="list-block media-list">
-          <ul></ul>
+            <ul></ul>
           </div>
-            <a href="#" class="floating-button">
-              <i class="icon icon-plus"></i>
-            </a>
+          <a href="#" class="floating-button">
+            <i class="icon icon-plus"></i>
+          </a>
         </div>
-        <div id="createDinnerView" class="page-content" style="display: none;">
+        <div id="createDinnerView" class="page-content">
           <div class="list-block">
             <ul>
               <li>
@@ -83,7 +83,7 @@
                   </div>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#" class="item-content">
                     <div class="item-inner">
                       <div class="item-title-row">
                         <div class="item-title">Add new dish</div>
@@ -95,14 +95,11 @@
               </ul>
             </div>
           </div>
-        </div>
         <div id="selectDishView" class="page-content">
-          <div class="content-block">
-            <div class="buttons-row">
-              <a href="#tab1" class="tab-link active button">Starters</a>
-              <a href="#tab2" class="tab-link button">Mains</a>
-              <a href="#tab3" class="tab-link button">Desserts</a>
-            </div>
+          <div class="buttons-row">
+            <a href="#tab1" class="tab-link active button">Starters</a>
+            <a href="#tab2" class="tab-link button">Mains</a>
+            <a href="#tab3" class="tab-link button">Desserts</a>
           </div>
           <!-- Tabs, tabs wrapper -->
           <div class="tabs">
@@ -129,7 +126,53 @@
             </div>
           </div>
         </div>
-    </div>
+    		<div id="dinnerView" class="page-content">
+            <div class="list-block">
+              <ul>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title">Date</div>
+                    <div class="item-after"><span id="dinnerDate"></span></div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-form-name"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title">Guests</div>
+                    <div class="item-after"><span id="numberOfGuests"></span></div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-media">sek</div>
+                  <div class="item-inner">
+                    <div class="item-title">Total price</div>
+                    <div class="item-after"><span id="totalPrice"></span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="content-block-title">Dishes</div>
+            <div class="list-block media-list">
+              <ul id="dishesList">
+              </ul>
+            </div>
+    		</div>
+
+        <div id="dishView" class="page-content">
+            <div class="content-block-title">Ingredients</div>
+            <div class="list-block">
+              <ul id="ingredientsList">
+              </ul>
+            </div>
+            <div class="content-block-title">Instructions</div>
+            <div class="content-block inset">
+              <div class="content-block-inner">
+                <p id="instructions"></p>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -142,6 +185,7 @@
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/dinnerView.js"></script>
   <script src="js/view/startView.js"></script>
+  <script src="js/view/dishView.js"></script>
   <script src="js/view/navView.js"></script>
   <script src="js/view/createDinnerView.js"></script>
 	<!--<script src="js/view/exampleViewController.js"></script>-->
