@@ -13,34 +13,38 @@
 
   </head>
   <body>
-	<div class="container">
-    <div id="navigationView" class="title-bar">
-      <div id="title" class="center title">Dinn3r Plann3r</div>
-      <div id="button-left" class="left" style="display: none;"><a href="#">Back</a></div>
-      <div id="button-right" class="right" style="display: none;"><a href="#">Forward</a></div>
+	<div class="container view">
+    <div class="pages navbar-fixed toolbar-fixed">
+      <div class="page">
+        <div id="navigationView" class="navbar">
+          <div id="title" class="center title">Dinn3r Plann3r</div>
+          <div id="button-left" class="left" style="display: none;"><a href="#">Back</a></div>
+          <div id="button-right" class="right" style="display: none;"><a href="#">Forward</a></div>
+        </div>
+        <div id="startView" class="page-content">
+          <section class="block-list">
+          <ul></ul>
+          </section>
+          <button class="button" type="button">Add</button>
+        </div>
+    		<div id="dinnerView" class="page-content">
+    			<div>
+    				Number of guests: <span id="numberOfGuests"></span>
+            Date: <span id="dinnerDate"></span>
+            Total price: <span id="totalPrice"></span>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th><th>Type</th><th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="dishesTable">
+              </tbody>
+            </table>
+    			</div>
+    		</div>
+      </div>
     </div>
-    <div id="startView">
-      <section class="block-list">
-      <ul></ul>
-      </section>
-      <button class="button" type="button">Add</button>
-    </div>
-		<div id="dinnerView">
-			<div>
-				Number of guests: <span id="numberOfGuests"></span>
-        Date: <span id="dinnerDate"></span>
-        Total price: <span id="totalPrice"></span>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th><th>Type</th><th>Price</th>
-            </tr>
-          </thead>
-          <tbody id="dishesTable">
-          </tbody>
-        </table>
-			</div>
-		</div>
 	</div>
 
     <!-- jQuery -->
