@@ -3,9 +3,11 @@ var StartView = function (container, models) {
   
   // Get all the relevant elements of the view (ones that show data
     // and/or ones that responed to interaction)
-  this.table = container.find("table")
+  this.list = container.find("ul")
   var _this = this;
   _.each(models, function(obj) {
-    _this.table.append($("<tr><td>"+obj.date+"</td><td>"+obj.guests+" ppl</td><td>"+obj.getTotalMenuPrice()+" kr</td></tr>"));
+    _this.list.append(
+      $('<li class="with-chevron"><a href="#">'
+        +'<strong>'+obj.date+'</strong>'+obj.guests+" ppl "+obj.getTotalMenuPrice()+"</a></li>"));
   })
 }

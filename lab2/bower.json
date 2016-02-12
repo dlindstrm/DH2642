@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "underscore": "^1.8.3",
-    "foundation-apps": "~1.2.0"
+    "Framework7": "framework7#~1.4.0"
   }
 }
