@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "underscore": "^1.8.3",
-    "foundation-sites": "^6.1.2"
+    "foundation-apps": "~1.2.0"
   }
 }

@@ -7,29 +7,23 @@
     <title>Dinner planner</title>
 
     <!-- Foundation CSS -->
-    <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.min.css">
+    <link rel="stylesheet" href="bower_components/foundation-apps/dist/css/foundation-apps.min.css">
 
     <link rel="stylesheet" href="styles/app.css">
 
   </head>
   <body>
 	<div class="container">
-    <div id="navigationView" class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li><div id="button-left" style="display: none;"><button class="button" type="button"></button></div></li>
-        </ul>
-      </div>
-      <div id="title" class="top-bar-title">Dinn3r Plann3r</div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><div id="button-right" style="display: none;"><button id="button-right" class="button" type="button"></button></div></li>
-        </ul>
-      </div>
+    <div id="navigationView" class="title-bar">
+      <div id="button-left" style="display: none;"><span class="left"><a href="#">Back</a></span></div>
+      <div id="title" class="center title">Dinn3r Plann3r</div>
+      <div id="button-right" style="display: none;"><span class="right"><a href="#">Forward</a></span></div>
     </div>
     <div id="startView">
-      <table></table>
-      <div class="googleTypeButton"><button class="button" type="button">Add</button></div>
+      <section class="block-list">
+      <ul></ul>
+      </section>
+      <button class="button" type="button">Add</button>
     </div>
 		<div id="dinnerView">
 			<div>
@@ -54,7 +48,7 @@
     <!-- Underscore -->
     <script src="bower_components/underscore/underscore-min.js"></script>
     <!-- Foundation -->
-    <script src="bower_components/foundation-sites/dist/foundation.min.js"></script>
+    <script src="bower_components/foundation-apps/dist/js/foundation-apps.min.js"></script>
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
