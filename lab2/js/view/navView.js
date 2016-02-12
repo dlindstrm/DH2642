@@ -8,21 +8,21 @@ var NavView = function (container) {
   this.buttonRight = container.find("#button-right");
   
   this.setTitle = function(title) {
-    this.title.css("display", "block");
+    this.title.css("display", "inline-block");
     this.title.html(title);
   }
   this.hideTitle = function() {
     this.title.css("display", "none");
   }
   this.setButtonRight = function(content) {
-    this.buttonRight.css("display", "block");
+    this.buttonRight.css("display", "inline-block");
     this.buttonRight.html(content);
   }
   this.hideButtonRight = function() {
     this.buttonRight.css("display", "none");
   }
   this.setButtonLeft = function(content) {
-    this.buttonLeft.css("display", "block");
+    this.buttonLeft.css("display", "inline-block");
     this.buttonLeft.html(content);
   }
   this.hideButtonLeft = function() {

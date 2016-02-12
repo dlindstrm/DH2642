@@ -1,4 +1,6 @@
 $(function() {
+  var myApp = new Framework7();
+
 	var model = new DinnerModel(1, "2016-01-01", 6);
 	model.addDishToMenu(3);
 	model.addDishToMenu(1);
@@ -17,9 +19,11 @@ $(function() {
   navView.setTitle("Dinn3r Plann3r");
   navView.hideButtonRight();
   navView.hideButtonLeft();
-  
+
   var startView = new StartView($("#startView"), dinners);
 
 	var dinnerView = new DinnerView($("#dinnerView"));
 	dinnerView.populateView(model);
+
+  var createDinnerView = new CreateDinnerView($("#createDinnerView"), new DinnerModel());
 });
