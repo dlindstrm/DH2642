@@ -20,6 +20,10 @@ $(function() {
   
   var startView = new StartView($("#startView"), dinners);
 
-	var dinnerView = new DinnerView($("#dinnerView"));
-	dinnerView.populateView(model);
+  var dinnerView = new DinnerView($("#dinnerView"));
+  dinnerView.populateView(model);
+
+  var dishView = new DishView($("#dishView"));
+  dishView.populateView(model,1);
+
 });
