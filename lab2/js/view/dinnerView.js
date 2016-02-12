@@ -3,7 +3,6 @@ var DinnerView = function (container, models) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-<<<<<<< HEAD
 	this.numberOfGuests = container.find("#numberOfGuests");
 	this.dinnerDate = container.find("#dinnerDate");
 	this.totalPrice = container.find("#totalPrice");
@@ -20,9 +19,9 @@ var DinnerView = function (container, models) {
 		}
 		this.dishesTable.html(dishesHTML);
 	}
-=======
+
 	this.table = container.find("table");
->>>>>>> c46fd24d36a9c778a3821ca905b336736587b010
+
 
 	
 	

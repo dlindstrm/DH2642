@@ -46,7 +46,6 @@ var DinnerModel = function(id, date, guests) {
 			price += ingredients[i].price * this.guests;
 		}
 		return price;
-<<<<<<< HEAD
 	}
 
 	this.getDishPrice = function(id) {
@@ -56,8 +55,6 @@ var DinnerModel = function(id, date, guests) {
 			price = price + dish.ingredients[i].price * this.guests;
 		}
 		return price;
-=======
->>>>>>> c46fd24d36a9c778a3821ca905b336736587b010
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
