@@ -31,8 +31,8 @@ var DinnerModel = function(id, date, guests) {
 	this.getAllIngredients = function() {
 		var ingredients = [];
 		for(i in this.dishes) {
-			for(j in dish[i].ingredients) {
-				ingredients.push(dish[i].ingredients[j]);
+			for(j in this.dishes[i].ingredients) {
+				ingredients.push(this.dishes[i].ingredients[j]);
 			}
 		}
 		return ingredients;
@@ -43,8 +43,18 @@ var DinnerModel = function(id, date, guests) {
 		var ingredients = this.getAllIngredients();
 		var price = 0;
 		for(i in ingredients) {
-			price += ingredient[i].price * this.guests;
+			price += ingredients[i].price * this.guests;
 		}
+		return price;
+	}
+
+	this.getDishPrice = function(id) {
+		var dish = this.getDish(id);
+		var price = 0;
+		for(var i=0;i<dish.ingredients.length;i++) {
+			price = price + dish.ingredients[i].price * this.guests;
+		}
+		return price;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
