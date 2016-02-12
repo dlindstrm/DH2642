@@ -1,0 +1,14 @@
+body {
+  padding-top: 40px;
+}
+#navigationView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#navigationView .top-bar-title {
+  float: none;
+  text-align: center;
+  font-weight: bold;
+}

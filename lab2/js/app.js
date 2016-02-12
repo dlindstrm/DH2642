@@ -1,5 +1,4 @@
 $(function() {
-	//We instantiate our model
 	var model = new DinnerModel(1, "2016-01-01", 6);
 	model.addDishToMenu(3);
 	model.addDishToMenu(1);
@@ -12,11 +11,15 @@ $(function() {
   dinners.push(dinner2);
   var dinner3 = new DinnerModel(3, "2016-01-03", 12);
   dinners.push(dinner3);
-	//And create the needed controllers and views
+  dinners.push(model);
+
+  var navView = new NavView($("#navigationView"));
+  navView.setTitle("Dinn3r Plann3r");
+  navView.hideButtonRight();
+  navView.hideButtonLeft();
+  
   var startView = new StartView($("#startView"), dinners);
 
 	var dinnerView = new DinnerView($("#dinnerView"));
-
 	dinnerView.populateView(model);
-
 });
