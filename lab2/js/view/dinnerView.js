@@ -9,6 +9,10 @@ var DinnerView = function (container, models) {
 	this.dishesList = container.find("#dishesList");
 
 	this.populateView = function(dinner) {
+		this.numberOfGuests.html('');
+		this.dinnerDate.html('');
+		this.totalPrice.html('');
+		this.dishesList.html('');
 		this.numberOfGuests.html(dinner.guests);
 		this.dinnerDate.html(dinner.date)
 		this.totalPrice.html(dinner.getTotalMenuPrice() + ":-");
