@@ -7,7 +7,10 @@ var DishView = function (container, models) {
 	this.instructions = container.find("#instructions");
 
 
+
 	this.populateView = function(dinner,id) {
+		this.ingredientsList.html('');
+		this.instructions.html('');
 		var dish = dinner.getDish(id);
 		for(var i=0;i< dish.ingredients.length;i++) {
 			var li = $('<li></li>').addClass('item-content');

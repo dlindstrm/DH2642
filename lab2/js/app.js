@@ -39,7 +39,6 @@ $(function() {
   dinnerView.populateView(model);
 
   var dishView = new DishView($("#dishView"));
-  dishView.populateView(model,1);
 
   var createDinnerView = new CreateDinnerView($("#createDinnerView"), new DinnerModel());
 });
