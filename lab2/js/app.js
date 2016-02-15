@@ -1,6 +1,6 @@
 $(function() {
 
-	var model = new DinnerModel(1, "2016-01-01", 6);
+	var model = new DinnerModel(4, "2016-01-01", 6);
 	model.addDishToMenu(3);
 	model.addDishToMenu(1);
 	model.addDishToMenu(101);
@@ -19,7 +19,7 @@ $(function() {
   });
 	route('dinner', 'dinnerView', function (dinnerId) {
 		$('#dinnerView').css('display', 'block');
-	    dinnerView.populateView(dinners[dinnerId])
+	    dinnerView.setModel(_.find(dinners, function(dinner){ return dinner.id == dinnerId; }));
 	});
 	route('dish', 'dishView', function (dishId) {
 		$('#dishView').css('display', 'block');
