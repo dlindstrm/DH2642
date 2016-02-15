@@ -35,7 +35,7 @@
           <div class="list-block media-list">
             <ul></ul>
           </div>
-          <a href="#" class="floating-button">
+          <a href="#create" class="floating-button">
             <i class="icon icon-plus"></i>
           </a>
         </div>
@@ -67,8 +67,8 @@
           <div class="content-block-title">Dishes</div>
             <div class="list-block media-list">
               <ul>
-               <li class="swipeout">
-                  <div class="item-content swipeout-content">
+               <li>
+                  <div class="item-content">
                     <div class="item-inner">
                       <div class="item-title-row">
                         <div class="item-title">Toast Skagen</div>
@@ -77,13 +77,9 @@
                       <div class="item-subtitle">Starter</div>
                     </div>
                   </div>
-                  <div class="swipeout-actions-right">
-                    <!-- Add this button and item will be deleted automatically -->
-                    <a href="#" class="swipeout-delete">Delete</a>
-                  </div>
                 </li>
                 <li>
-                  <a href="#" class="item-content">
+                  <a href="#selectDish" class="item-content">
                     <div class="item-inner">
                       <div class="item-title-row">
                         <div class="item-title">Add new dish</div>
@@ -97,31 +93,24 @@
           </div>
         <div id="selectDishView" class="page-content router-view">
           <div class="buttons-row">
-            <a href="#tab1" class="tab-link active button">Starters</a>
-            <a href="#tab2" class="tab-link button">Mains</a>
-            <a href="#tab3" class="tab-link button">Desserts</a>
+            <a href="#selectDish/starters" class="tab-link active button">Starters</a>
+            <a href="#selectDish/mains" class="tab-link button">Mains</a>
+            <a href="#selectDish/desserts" class="tab-link button">Desserts</a>
           </div>
-          <!-- Tabs, tabs wrapper -->
           <div class="tabs">
-            <!-- Tab 1, active by default -->
-            <div id="tab1" class="tab active">
+            <div id="starters" class="tab active">
               <div class="content-block">
-                <p>This is tab 1 content</p>
-                ...
+                <ul></ul>
               </div>
             </div>
-            <!-- Tab 2 -->
-            <div id="tab2" class="tab">
+            <div id="mains" class="tab">
               <div class="content-block">
-                <p>This is tab 2 content</p>
-                ...
+                <ul></ul>
               </div>
             </div>
-            <!-- Tab 3 -->
-            <div id="tab3" class="tab">
+            <div id="desserts" class="tab">
               <div class="content-block">
-                <p>This is tab 3 content</p>
-                ...
+                <ul></ul>
               </div>
             </div>
           </div>

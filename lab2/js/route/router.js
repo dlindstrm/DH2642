@@ -25,7 +25,6 @@ function router () {
     }
     else {
     	route.controller();
-
     }
 }
 // Listen on hash change:

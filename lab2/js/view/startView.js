@@ -7,7 +7,7 @@ var StartView = function (container, models) {
   var _this = this;
   _.each(models, function(obj) {
     _this.list.append(
-      $('<li><a href="#" class="item-link item-content"><div class="item-inner">'
+      $('<li><a href="#dinner/'+obj.id+'" class="item-link item-content"><div class="item-inner">'
         +'<div class="item-title-row">'+
           '<div class="item-title">'+obj.date+'</div>'+
           '<div class="item-after">'+obj.getTotalMenuPrice()+" kr</div>"+

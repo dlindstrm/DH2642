@@ -4,7 +4,7 @@ $(function() {
 	model.addDishToMenu(3);
 	model.addDishToMenu(1);
 	model.addDishToMenu(101);
-	
+
   var dinners = [];
 	var dinner1 = new DinnerModel(1, "2016-01-01", 6);
   dinners.push(dinner1);
@@ -28,6 +28,10 @@ $(function() {
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
   });
+  route('selectDish', 'selectDishView', function(type) {
+    $('#selectDishView').css('display', 'block');
+    selectDishView.showTab(type);
+  })
 
   var navView = new NavView($("#navigationView"));
   navView.setTitle("Dinn3r Plann3r");
@@ -37,9 +41,10 @@ $(function() {
   var startView = new StartView($("#startView"), dinners);
 
   var dinnerView = new DinnerView($("#dinnerView"));
-  dinnerView.populateView(model);
 
   var dishView = new DishView($("#dishView"));
 
   var createDinnerView = new CreateDinnerView($("#createDinnerView"), new DinnerModel());
+
+  var selectDishView = new SelectDishView($("#selectDishView"), new DinnerModel());
 });
