@@ -1,6 +1,4 @@
 $(function() {
-  var myApp = new Framework7();
-
 
 	var model = new DinnerModel(1, "2016-01-01", 6);
 	model.addDishToMenu(3);
@@ -16,9 +14,9 @@ $(function() {
   dinners.push(dinner3);
   dinners.push(model);
 
-    route('/', 'startView', function () {
-    	$('#startView').css('display', 'block');
-    });
+  route('/', 'startView', function () {
+  	$('#startView').css('display', 'block');
+  });
 	route('dinner', 'dinnerView', function (dinnerId) {
 		$('#dinnerView').css('display', 'block');
 	    dinnerView.populateView(dinners[dinnerId])
@@ -27,6 +25,9 @@ $(function() {
 		$('#dishView').css('display', 'block');
 	    dishView.populateView(model,dishId)
 	});
+  route('create', 'createDinnerView', function() {
+    $('#createDinnerView').css('display', 'block');
+  });
 
   var navView = new NavView($("#navigationView"));
   navView.setTitle("Dinn3r Plann3r");

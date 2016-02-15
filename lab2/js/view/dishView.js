@@ -6,8 +6,6 @@ var DishView = function (container, models) {
 	this.ingredientsList = container.find("#ingredientsList");
 	this.instructions = container.find("#instructions");
 
-
-
 	this.populateView = function(dinner,id) {
 		this.ingredientsList.html('');
 		this.instructions.html('');
@@ -25,6 +23,5 @@ var DishView = function (container, models) {
 			this.ingredientsList.append(li);
 		}
 		this.instructions.append(dish.description);
-	}           	
+	}
 }
- 

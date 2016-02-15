@@ -38,9 +38,5 @@ var DinnerView = function (container, models) {
 	}
 
 	this.table = container.find("table");
-
-
-	
-	
 }
  
