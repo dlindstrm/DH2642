@@ -32,8 +32,7 @@ var DinnerView = function (container, models) {
 			divMedia.append(img);
 			link.append(divMedia,divInner);
 			li.append(link);
-			this.dishesList.append(li);	
-
+			this.dishesList.append(li);
 		}
 	}
 

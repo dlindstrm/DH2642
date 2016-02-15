@@ -5,13 +5,13 @@ var SelectDishView = function (container, model) {
   this.dessertsCont = container.find("#desserts ul");
 
   this.starters = model.getAllDishes("starter");
-  this.mains = model.getAllDishes('main');
+  this.mains = model.getAllDishes('main dish');
   this.desserts = model.getAllDishes('dessert');
 
   var createTab = function(models, parentDiv) {
     _.each(models, function(obj) {
       var li = $('<li></li>');
-      var link = $('<a></a>').attr('href', '#dish/' + obj.id).addClass('item-link item-content');
+      var div = $('<div></div>').addClass('item-content');
       var divMedia = $('<div></div>').addClass('item-media');
       var img = $('<img></img>').attr({'src': 'images/' + obj.image, 'width': '80'});
       var divInner = $('<div></div>').addClass('item-inner');
@@ -21,15 +21,15 @@ var SelectDishView = function (container, model) {
       divTitleRow.append(title,price);
       divInner.append(divTitleRow);
       divMedia.append(img);
-      link.append(divMedia,divInner);
-      li.append(link);
+      divMedia.append(divMedia,divInner);
+      li.append(divMedia);
       parentDiv.append(li);
     })
   }
 
-  this.createTab(this.starters, this.startersCont);
-  this.createTab(this.mains, this.mainsCont);
-  this.createTab(this.desserts, this.dessertsCont);
+  createTab(this.starters, this.startersCont);
+  createTab(this.mains, this.mainsCont);
+  createTab(this.desserts, this.dessertsCont);
 
   this.showTab = function(type) {
     container.find(".active").removeClass("active");
