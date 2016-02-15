@@ -1,5 +1,5 @@
 //DinnerView Object constructor
-var DinnerView = function (container) {
+var DinnerView = function (container, nav) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
@@ -8,6 +8,7 @@ var DinnerView = function (container) {
 	this.totalPrice = container.find("#totalPrice");
 	this.dishesList = container.find("#dishesList");
 	this.model;
+	this.navView = nav;
 
 	this.setModel = function(model) {
 		this.model = model;
@@ -22,6 +23,7 @@ var DinnerView = function (container) {
 		this.numberOfGuests.html(this.model.guests);
 		this.dinnerDate.html(this.model.date)
 		this.totalPrice.html(this.model.getTotalMenuPrice() + ":-");
+		this.navView.setTitle(this.model.date);
 		var dishes = this.model.getFullMenu();
 		for(var i=0;i<dishes.length;i++) {
 			var li = $('<li></li>');

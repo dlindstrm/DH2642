@@ -1,6 +1,6 @@
 $(function() {
 
-	var model = new DinnerModel(4, "2016-01-01", 6);
+	var model = new DinnerModel(4, "2016-02-12", 6);
 	model.addDishToMenu(3);
 	model.addDishToMenu(1);
 	model.addDishToMenu(101);
@@ -16,6 +16,7 @@ $(function() {
 
   route('/', 'startView', function () {
   	$('#startView').css('display', 'block');
+    navView.setTitle("Dinn3r Plann3r");
   });
 	route('dinner', 'dinnerView', function (dinnerId) {
 		$('#dinnerView').css('display', 'block');
@@ -23,10 +24,11 @@ $(function() {
 	});
 	route('dish', 'dishView', function (dishId) {
 		$('#dishView').css('display', 'block');
-	    dishView.populateView(model,dishId)
+	    dishView.populateView(dishId)
 	});
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
+    navView.setTitle('Create dinner');
   });
   route('selectDish', 'selectDishView', function(type) {
     $('#selectDishView').css('display', 'block');
@@ -34,15 +36,14 @@ $(function() {
   })
 
   var navView = new NavView($("#navigationView"));
-  navView.setTitle("Dinn3r Plann3r");
   navView.hideButtonRight();
   navView.hideButtonLeft();
 
   var startView = new StartView($("#startView"), dinners);
 
-  var dinnerView = new DinnerView($("#dinnerView"));
+  var dinnerView = new DinnerView($("#dinnerView"),navView);
 
-  var dishView = new DishView($("#dishView"));
+  var dishView = new DishView($("#dishView"),navView);
 
   var createDinnerView = new CreateDinnerView($("#createDinnerView"), new DinnerModel());
 
