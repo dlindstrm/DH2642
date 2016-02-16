@@ -1,7 +1,3 @@
-#dishView,#dinnerView,#createDinnerView,#selectDishView {
-	display: none;
-}
-
 .dish-img {
 	text-align: center;
 }

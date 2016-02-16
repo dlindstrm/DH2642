@@ -15,7 +15,7 @@
   </head>
   <body>
 	<div class="container view">
-    <div class="pages navbar-fixed toolbar-fixed">
+    <div class="pages navbar-fixed">
       <div class="page">
         <div id="navigationView" class="navbar">
           <div class="navbar-inner">
@@ -93,10 +93,12 @@
             </div>
           </div>
         <div id="selectDishView" class="page-content router-view">
-          <div class="buttons-row">
-            <a href="#selectDish/starters" class="tab-link active button">Starters</a>
-            <a href="#selectDish/mains" class="tab-link button">Mains</a>
-            <a href="#selectDish/desserts" class="tab-link button">Desserts</a>
+          <div class="content-block">
+            <div class="buttons-row">
+              <a href="#selectDish/starters" class="tab-link active button">Starters</a>
+              <a href="#selectDish/mains" class="tab-link button">Mains</a>
+              <a href="#selectDish/desserts" class="tab-link button">Desserts</a>
+            </div>
           </div>
           <div class="tabs">
             <div id="starters" class="tab active">
@@ -149,7 +151,7 @@
             </div>
     		</div>
         <div id="dishView" class="page-content router-view">
-            <div class="dish-img"></div>
+            <div class="content-block"><div class="dish-img"></div></div>
             <div class="content-block-title">Ingredients</div>
             <div class="list-block">
               <ul id="ingredientsList">
