@@ -26,7 +26,6 @@ var SelectDishView = function (container, model) {
       parentDiv.append(li);
     })
   }
-
   createTab(this.starters, this.startersCont);
   createTab(this.mains, this.mainsCont);
   createTab(this.desserts, this.dessertsCont);

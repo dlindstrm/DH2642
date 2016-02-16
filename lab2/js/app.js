@@ -17,27 +17,36 @@ $(function() {
   route('/', 'startView', function () {
   	$('#startView').css('display', 'block');
     navView.setTitle("Dinn3r Plann3r");
+    navView.hideButtonRight();
+    navView.hideButtonLeft();
   });
 	route('dinner', 'dinnerView', function (dinnerId) {
 		$('#dinnerView').css('display', 'block');
-	    dinnerView.setModel(_.find(dinners, function(dinner){ return dinner.id == dinnerId; }));
+	  dinnerView.setModel(_.find(dinners, function(dinner){ return dinner.id == dinnerId; }));
+    navView.hideButtonRight();
+    navView.showBackButton('#');
 	});
 	route('dish', 'dishView', function (dishId) {
 		$('#dishView').css('display', 'block');
-	    dishView.populateView(dishId)
+	  dishView.populateView(dishId);
+    navView.hideButtonRight();
+    navView.showBackButton('#');
 	});
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
     navView.setTitle('Create dinner');
+    navView.hideButtonRight();
+    navView.showBackButton('#');
   });
   route('selectDish', 'selectDishView', function(type) {
     $('#selectDishView').css('display', 'block');
     selectDishView.showTab(type);
+    navView.setButtonLeft('<a href="#create" class="link">Cancel</a>');
+    navView.setButtonRight('<a href="#create" class="link">Select</a>');
   })
 
   var navView = new NavView($("#navigationView"));
   navView.hideButtonRight();
-  navView.hideButtonLeft();
 
   var startView = new StartView($("#startView"), dinners);
 
