@@ -17,12 +17,12 @@ var SelectDishView = function (container, model) {
       var divInner = $('<div></div>').addClass('item-inner');
       var divTitleRow = $('<div></div>').addClass('item-title-row');
       var title = $('<div></div>').addClass('item-title').append(obj.name);
-      var price = $('<div></div>').addClass('item-after').append(model.getDishPrice(obj.id) + ':-');
-      divTitleRow.append(title,price);
+      var subtitle = $('<div></div>').addClass('item-subtitle');
+      divTitleRow.append(title, subtitle);
       divInner.append(divTitleRow);
       divMedia.append(img);
-      divMedia.append(divMedia,divInner);
-      li.append(divMedia);
+      div.append(divMedia, divInner);
+      li.append(div);
       parentDiv.append(li);
     })
   }
