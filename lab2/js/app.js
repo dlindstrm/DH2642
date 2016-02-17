@@ -35,8 +35,8 @@ $(function() {
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
     navView.setTitle('Create dinner');
-    navView.hideButtonRight();
-    navView.showBackButton('#');
+    navView.setButtonLeft('<a href="#" class="link">Cancel</a>');
+    navView.setButtonRight('<a href="#" class="link">Save</a>');
   });
   route('selectDish', 'selectDishView', function(type) {
     $('#selectDishView').css('display', 'block');
