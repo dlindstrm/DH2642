@@ -1,19 +1,18 @@
 $(function() {
-
-	var model = new DinnerModel(4, "2016-02-12", 6);
-	model.addDishToMenu(3);
-	model.addDishToMenu(1);
-	model.addDishToMenu(101);
-
   var dinners = [];
+	var dinner = new DinnerModel(4, "2016-02-12", 6);
+	dinner.addDishToMenu(3);
+	dinner.addDishToMenu(1);
+	dinner.addDishToMenu(101);
 	var dinner1 = new DinnerModel(1, "2016-01-01", 6);
   dinners.push(dinner1);
 	var dinner2 = new DinnerModel(2, "2016-01-02", 8);
   dinners.push(dinner2);
   var dinner3 = new DinnerModel(3, "2016-01-03", 12);
   dinners.push(dinner3);
-  dinners.push(model);
+  dinners.push(dinner);
 
+  var latestDinner = 0;
   route('/', 'startView', function () {
   	$('#startView').css('display', 'block');
     navView.setTitle("Dinn3r Plann3r");
@@ -22,6 +21,7 @@ $(function() {
   });
 	route('dinner', 'dinnerView', function (dinnerId) {
 		$('#dinnerView').css('display', 'block');
+    latestDinner = dinnerId;
 	  dinnerView.setModel(_.find(dinners, function(dinner){ return dinner.id == dinnerId; }));
     navView.hideButtonRight();
     navView.showBackButton('#');
@@ -30,7 +30,7 @@ $(function() {
 		$('#dishView').css('display', 'block');
 	  dishView.populateView(dishId);
     navView.hideButtonRight();
-    navView.showBackButton('#');
+    navView.showBackButton('#dinner/'+latestDinner);
 	});
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
