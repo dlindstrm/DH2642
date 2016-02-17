@@ -1,16 +1,20 @@
 $(function() {
   var dinners = [];
-	var dinner = new DinnerModel(4, "2016-02-12", 6);
-	dinner.addDishToMenu(3);
+	var dinner = new DinnerModel(4, "2016-02-12", 2);
 	dinner.addDishToMenu(1);
-	dinner.addDishToMenu(101);
+	dinner.addDishToMenu(100);
+	dinner.addDishToMenu(200);
+  dinners.push(dinner);
 	var dinner1 = new DinnerModel(1, "2016-01-01", 6);
+  dinner1.addDishToMenu(2);
+  dinner1.addDishToMenu(101);
+  dinner1.addDishToMenu(201);
   dinners.push(dinner1);
 	var dinner2 = new DinnerModel(2, "2016-01-02", 8);
+  dinner2.addDishToMenu(3);
+  dinner2.addDishToMenu(102);
+  dinner2.addDishToMenu(202);
   dinners.push(dinner2);
-  var dinner3 = new DinnerModel(3, "2016-01-03", 12);
-  dinners.push(dinner3);
-  dinners.push(dinner);
 
   var latestDinner = 0;
   route('/', 'startView', function () {
