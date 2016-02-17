@@ -1,3 +1,6 @@
 .dish-img {
 	text-align: center;
 }
+.navbar, .subnavbar, .toolbar {
+	background: red;
+}
