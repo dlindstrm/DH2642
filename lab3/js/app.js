@@ -16,6 +16,13 @@ $(function() {
   dinner2.addDishToMenu(202);
   dinners.push(dinner2);
 
+
+ var model = new DinnerModel(3,"2016-03-22", 3);
+ model.addObserver(function(model, args){
+
+ });
+
+
   var latestDinner = 0;
   route('/', 'startView', function () {
   	$('#startView').css('display', 'block');

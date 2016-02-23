@@ -7,6 +7,7 @@ var DinnerModel = function(id, date, guests) {
 	this.date = date;
 	this.guests = guests;
 	this.dishes = [];
+	this.observers = [];
 
 	this.setNumberOfGuests = function(num) {
 		this.guests = num;
@@ -99,6 +100,18 @@ var DinnerModel = function(id, date, guests) {
 			}
 		}
 	}
+
+	this.addObserver = function(observer) {
+		this.observers.push(observer);
+	}
+	
+	this.notifyObservers = function(obj) {
+		for(obs in observers) {
+			obs.update();
+		}
+	}
+
+
 
 
 	// the dishes variable contains an array of all the 
