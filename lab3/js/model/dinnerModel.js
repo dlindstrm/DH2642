@@ -73,6 +73,7 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		this.removeDishFromMenu(id);
 		this.dishes.push(this.getDish(id));
+		console.log(this.dishes);
 		this.notifyObservers();
 	}
 

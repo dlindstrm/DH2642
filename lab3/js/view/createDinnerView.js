@@ -8,8 +8,11 @@ var CreateDinnerView = function (container, model) {
 
   var _this = this;
   this.populate = function(model) {
+    _this.list.html("");
     this.totalPrice.html(model.getTotalMenuPrice());
-    for(dish in model.getFullMenu()) {
+    var dishes = model.getFullMenu();
+    for(var i = 0; i < dishes.length; i++) {
+      var dish = dishes[i];
       var newItem = $("<li></li>").html(
       '<div class="item-content"><div class="item-inner"><div class="item-title-row">'+
           '<div class="item-title">'+dish.name+'</div>'+
