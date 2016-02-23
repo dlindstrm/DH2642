@@ -1,7 +1,7 @@
 $(function() {
+  var dinners = [];
 
- var model = new DinnerModel();
-
+  var model = new DinnerModel();
 
   var latestDinner = 0;
   route('/', 'startView', function () {
@@ -39,13 +39,15 @@ $(function() {
   var navView = new NavView($("#navigationView"));
   navView.hideButtonRight();
 
-  var startView = new StartView($("#startView"), model);
+  var startView = new StartView($("#startView"), dinners);
 
-  var dinnerView = new DinnerView($("#dinnerView"),navView);
+  var dinnerView = new DinnerView($("#dinnerView"), navView);
 
-  var dishView = new DishView($("#dishView"),navView);
+  var dishView = new DishView($("#dishView"), navView);
 
-  var createDinnerView = new CreateDinnerView($("#createDinnerView"), new DinnerModel());
+  var createDinnerView = new CreateDinnerView($("#createDinnerView"), model);
 
-  var selectDishView = new SelectDishView($("#selectDishView"), new DinnerModel());
+  var selectDishView = new SelectDishView($("#selectDishView"), model);
+
+  var createDinnerController = new CreateDinnerController(createDinnerView, model);
 });
