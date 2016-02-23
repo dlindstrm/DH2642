@@ -1,5 +1,5 @@
 //CreateDinnerController Object constructor
-var CreateDinnerController = function (view, navView, model) {
+var CreateDinnerController = function (view, navView, model, dinnerCollection) {
   this.navView = navView;
   view.dateInput.on("change", function() {
     model.setDate(new Date(view.dateInput.val()));
@@ -18,6 +18,7 @@ var CreateDinnerController = function (view, navView, model) {
     this.navView.buttonRight.unbind("click");
     this.navView.buttonRight.click(function(e) {
       e.preventDefault();
+      dinnerCollection.push(model);
       window.location.hash = "#";
     });
   }
