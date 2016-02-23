@@ -21,7 +21,6 @@ var CreateDinnerController = function (view, navView, model, dinnerCollection) {
     this.navView.showBackButton('#');
     this.navView.buttonLeft.click(function(e) {
       e.preventDefault();
-      resetModel("hej");
       window.location.hash = "#";
     });
 
@@ -33,9 +32,9 @@ var CreateDinnerController = function (view, navView, model, dinnerCollection) {
         alert("You cannot add a dinner without any dishes!");
       }
       else {
-        dinnerCollection.push(model);
+        window.location.hash = "#dinner";
       }
-      window.location.hash = "#";
+
     });
   }
 }

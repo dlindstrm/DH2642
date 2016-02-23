@@ -9,12 +9,8 @@ var DinnerView = function (container, model) {
 	this.dishesList = container.find("#dishesList");
 	this.model = model;
 
-	this.setModel = function(model) {
-		this.model = model;
-		this.populateView();
-	}
 
-	this.populateView = function() {
+	this.populate = function(model) {
 		this.numberOfGuests.html('');
 		this.dinnerDate.html('');
 		this.totalPrice.html('');
@@ -24,24 +20,32 @@ var DinnerView = function (container, model) {
 		this.totalPrice.html(this.model.getTotalMenuPrice() + ":-");
 		var dishes = this.model.getFullMenu();
 		for(var i=0;i<dishes.length;i++) {
-			var li = $('<li></li>');
-			var link = $('<a></a>').attr('href', '#dish/' + dishes[i].id).addClass('item-link item-content');
-			var divMedia = $('<div></div>').addClass('item-media');
-			var img = $('<img></img>').attr({'src': 'images/' + dishes[i].image, 'width': '80'});
-			var divInner = $('<div></div>').addClass('item-inner');
-			var divTitleRow = $('<div></div>').addClass('item-title-row');
-			var title = $('<div></div>').addClass('item-title').append(dishes[i].name);
-			var price = $('<div></div>').addClass('item-after').append(this.model.getDishPrice(dishes[i].id) + ':-');
-			var subtitle = $('<div></div>').addClass('item-subtitle').append(dishes[i].type);
-			divTitleRow.append(title,price);
-			divInner.append(divTitleRow, subtitle);
-			divMedia.append(img);
-			link.append(divMedia,divInner);
-			li.append(link);
-			this.dishesList.append(li);
+			var dish = dishes[i];
+			var ingredients = "";
+			for(var j=0;j< dish.ingredients.length;j++) {
+				ingredients += "<span>" + dish.ingredients[j].quantity + " ";
+				ingredients += dish.ingredients[j].unit + " ";
+				ingredients += dish.ingredients[j].name + "</span><br/>";
+			}
+
+			this.dishesList.append('<div class="card demo-card-header-pic">'+
+				'<div style="background-image:url(images/'+dishes[i].image+')" valign="bottom" class="card-header color-white no-border">'+
+				dishes[i].name+'</div>'+
+  				'<div class="card-content">'+
+    			'<div class="card-content-inner">'+
+      			'<p class="color-gray">'+ dishes[i].type + '</p>'+
+      			'<p>'+ingredients+'</p></div></div>'+
+				'<div class="card-footer">'+dishes[i].description + '</div></div>');
+
+
+
 		}
 	}
+	var _this = this;
+	this.update = function(model, args) {
+		_this.populate(model);
+	}
+	model.addObserver(this.update);
 
-	this.table = container.find("table");
 }
  
