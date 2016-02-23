@@ -22,12 +22,15 @@ $(function() {
 	});
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
+    $('#toolbarView').css('display', 'block');
     navView.setTitle('Create dinner');
     navView.setButtonLeft('<a href="#" class="link">Cancel</a>');
     navView.setButtonRight('<a href="#" class="link">Save</a>');
   });
   route('selectDish', 'selectDishView', function(type) {
     $('#selectDishView').css('display', 'block');
+    $('#toolbarView').css('display', 'block');
+
     selectDishView.showTab(type);
     navView.setButtonLeft('<a href="#create" class="link">Back</a>');
     navView.hideButtonRight();
@@ -35,6 +38,8 @@ $(function() {
 
   var navView = new NavView($("#navigationView"));
   navView.hideButtonRight();
+
+  var toolbarView = new ToolbarView($("#toolbarView"), model);
 
   var startView = new StartView($("#startView"), dinners);
 
