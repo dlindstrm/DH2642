@@ -20,10 +20,10 @@ function router () {
     var route = routes[urlList[0]];
     $(".router-view").css("display", "none");
     if(urlList.length > 1) {
-    	route.controller(urlList[1]);
+    	route.controller.init(urlList[1]);
     }
     else {
-    	route.controller();
+    	route.controller.init();
     }
 }
 // Listen on hash change:
