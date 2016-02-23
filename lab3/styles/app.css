@@ -9,3 +9,9 @@
 	display: inline-block;
 	color: #fff;
 }
+#dishView .floating-button {
+  bottom: 66px;
+}
+.floating-button {
+  position: fixed;
+}
