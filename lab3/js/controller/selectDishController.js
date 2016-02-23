@@ -8,6 +8,7 @@ var SelectDishController = function (view, navView, model) {
     $('#toolbarView').css('display', 'block');
     this.view.showTab(type);
     this.navView.setTitle('Select dish');
+    this.navView.buttonLeft.unbind("click");
     this.navView.showBackButton('#create');
     this.navView.hideButtonRight();
   }
