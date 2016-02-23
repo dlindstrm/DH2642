@@ -7,6 +7,7 @@ var StartController = function (view, navView) {
     $('#startView').css('display', 'block');
     this.view.populate();
     this.navView.setTitle("Dinn3r Plann3r");
+    this.navView.buttonLeft.unbind("click");
     this.navView.hideButtonRight();
     this.navView.hideButtonLeft();
   }

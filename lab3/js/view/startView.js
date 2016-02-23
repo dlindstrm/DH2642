@@ -13,6 +13,7 @@ var StartView = function (container, dinnerCollection) {
     this.mediaBlock = $("<div></div>").addClass("list-block media-list");
     this.list = $("<ul></ul>")
     var _this = this;
+    this.list.html("");
     _.each(this.dinnerCollection, function(obj, index) {
       _this.list.append(
         $('<li><a href="#dinner/'+index+'" class="item-link item-content"><div class="item-inner">'

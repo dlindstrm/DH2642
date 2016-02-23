@@ -5,7 +5,8 @@ var DinnerController = function (view, navView, dinnerCollection) {
   this.dinnerCollection = dinnerCollection;
   this.init = function(dinnerId) {
     $('#dinnerView').css('display', 'block');
-    this.view.setModel(dinnerCollection[dinnerId]);
+    this.view.setModel(this.dinnerCollection[dinnerId]);
+    this.navView.setTitle(this.dinnerCollection[dinnerId].getDate());
     this.navView.hideButtonRight();
     this.navView.showBackButton('#');
   }

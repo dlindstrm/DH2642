@@ -18,12 +18,22 @@ var CreateDinnerController = function (view, navView, model, dinnerCollection) {
     $('#toolbarView').css('display', 'block');
     this.navView.setTitle('Create dinner');
     this.navView.showBackButton('#');
+    this.navView.buttonLeft.click(function(e) {
+      e.preventDefault();
+      this.model = new DinnerModel();
+      window.location.hash = "#";
+    });
 
     this.navView.setButtonRight("Save");
     this.navView.buttonRight.unbind("click");
     this.navView.buttonRight.click(function(e) {
       e.preventDefault();
-      dinnerCollection.push(model);
+      if(model.getFullMenu().length == 0) {
+        alert("You cannot add a dinner without any dishes!");
+      }
+      else {
+        dinnerCollection.push(model);
+      }
       window.location.hash = "#";
     });
   }
