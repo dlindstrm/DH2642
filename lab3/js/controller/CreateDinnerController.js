@@ -13,6 +13,12 @@ var CreateDinnerController = function (view, navView, model) {
     $('#toolbarView').css('display', 'block');
     this.navView.setTitle('Create dinner');
     this.navView.showBackButton('#');
-    this.navView.hideButtonRight();
+
+    this.navView.setButtonRight("Save");
+    this.navView.buttonRight.unbind("click");
+    this.navView.buttonRight.click(function(e) {
+      e.preventDefault();
+      window.location.hash = "#";
+    });
   }
 }

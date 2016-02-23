@@ -5,18 +5,24 @@ var DishController = function (view, navView, model) {
 
   view.selectButton.click(function(e) {
     e.preventDefault();
-    console.log("heeej");
     model.addDishToMenu(view.id);
     window.location.hash = "#create";
   });
 
   this.init = function(dishId) {
-	$('#dishView').css('display', 'block');
+    $('#dishView').css('display', 'block');
     $('#toolbarView').css('display', 'block');
-	this.view.populateView(dishId);
-	this.navView.setTitle(model.getDish(dishId).name);
+  	this.view.populateView(dishId);
+  	this.navView.setTitle(model.getDish(dishId).name);
     this.navView.showBackButton("#selectDish/starters");
-    this.navView.hideButtonRight();
+
+    this.navView.setButtonRight("Select");
+    this.navView.buttonRight.unbind("click");
+    this.navView.buttonRight.click(function(e) {
+      e.preventDefault();
+      model.addDishToMenu(view.id);
+      window.location.hash = "#create";
+    });
   }
 }
 
