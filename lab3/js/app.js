@@ -39,6 +39,8 @@ $(function() {
   var navView = new NavView($("#navigationView"));
   navView.hideButtonRight();
 
+  var toolbarView = new ToolbarView($("#toolbarView"), model);
+
   var startView = new StartView($("#startView"), dinners);
 
   var dinnerView = new DinnerView($("#dinnerView"), navView);
