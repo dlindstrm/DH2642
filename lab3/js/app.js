@@ -18,6 +18,8 @@ $(function() {
 	});
 	route('dish', 'dishView', function (dishId) {
 		$('#dishView').css('display', 'block');
+        $('#toolbarView').css('display', 'block');
+
 	  dishView.populateView(dishId);
     navView.showBackButton("#selectDish");
     navView.hideButtonRight();
