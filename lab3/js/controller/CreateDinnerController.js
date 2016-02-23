@@ -7,6 +7,11 @@ var CreateDinnerController = function (view, navView, model) {
   view.guestInput.on("change", function() {
     model.setNumberOfGuests(view.guestInput.val());
   })
+  $(document).on("click", ".remove-dish", function(e){
+    e.preventDefault();
+    var id = $(this).attr('data');
+    model.removeDishFromMenu(id);
+  })
 
   this.init = function() {
     $('#createDinnerView').css('display', 'block');

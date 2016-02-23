@@ -21,10 +21,10 @@ var CreateDinnerView = function (container, model) {
       var dish = dishes[i];
       var newItem = $("<li></li>").html(
       '<div class="item-content"><div class="item-inner"><div class="item-title-row">'+
-          '<div class="item-title">'+dish.name+'</div>'+
-          '<div class="item-after">'+model.getDishPrice(dish.id)+'</div>'+
+          '<div class="item-title">'+dish.name+' ('+dish.type+')</div>'+
+          '<div class="item-after">'+model.getDishPrice(dish.id)+':-</div>'+
           '</div>'+
-          '<div class="item-subtitle">'+dish.type+'</div>'+
+          '<div class="item-subtitle"><a class="remove-dish" data="'+dish.id+'" href="#">Remove</a></div>'+
           '</div></div>');
       _this.list.prepend(newItem);
     }

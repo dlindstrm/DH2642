@@ -12,7 +12,6 @@ var ToolbarView = function (container, model) {
 		_this.guests.html(model.guests);
 		_this.price.html(model.getTotalMenuPrice());
 		var date = model.getDate();
-		console.log(date);
 		var y = date.getFullYear();
 		var m = date.getMonth() + 1;
 		if(m<10){
