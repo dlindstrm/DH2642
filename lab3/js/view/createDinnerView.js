@@ -5,11 +5,13 @@ var CreateDinnerView = function (container, model) {
   this.guestInput = container.find("#guest-input");
   this.totalPrice = container.find("#cinner-totalprice");
   this.list = container.find(".media-list ul");
+  this.addNewDishButton = container.find("#add-new");
 
   var _this = this;
   this.populate = function(model) {
     _this.list.html("");
-    this.totalPrice.html(model.getTotalMenuPrice());
+    _this.list.append(this.addNewDishButton);
+    _this.totalPrice.html(100);
     var dishes = model.getFullMenu();
     for(var i = 0; i < dishes.length; i++) {
       var dish = dishes[i];
@@ -26,6 +28,8 @@ var CreateDinnerView = function (container, model) {
   this.update = function(model, args) {
     _this.populate(model);
   }
+
+  this.populate(model);
 
   model.addObserver(this.update);
 }

@@ -16,7 +16,6 @@ function router () {
     	urlList = url.split('/'); 
     }
 
-    console.log(urlList[0]);
     // Get route by url:
     var route = routes[urlList[0]];
     $(".router-view").css("display", "none");

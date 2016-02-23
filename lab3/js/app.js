@@ -18,21 +18,24 @@ $(function() {
 	});
 	route('dish', 'dishView', function (dishId) {
 		$('#dishView').css('display', 'block');
-	  dishView.populateView(dishId);;
+	  dishView.populateView(dishId);
+    navView.showBackButton("#selectDish");
+    navView.hideButtonRight();
 	});
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
     $('#toolbarView').css('display', 'block');
     navView.setTitle('Create dinner');
-    navView.setButtonLeft('<a href="#" class="link">Cancel</a>');
-    navView.setButtonRight('<a href="#" class="link">Save</a>');
+    navView.showBackButton('#');
+    navView.hideButtonRight();
   });
   route('selectDish', 'selectDishView', function(type) {
     $('#selectDishView').css('display', 'block');
     $('#toolbarView').css('display', 'block');
 
     selectDishView.showTab(type);
-    navView.setButtonLeft('<a href="#create" class="link">Back</a>');
+    navView.setTitle('Select dish');
+    navView.showBackButton('#create');
     navView.hideButtonRight();
   })
 
