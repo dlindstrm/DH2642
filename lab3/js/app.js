@@ -12,7 +12,7 @@ $(function() {
   var createDinnerController = new CreateDinnerController(createDinnerView, navView, model);
   var selectDishController = new SelectDishController(selectDishView, navView, model);
   var startController = new StartController(startView, navView);
-  var dinnerController = new DinnerController(dinnerView, navView);
+  var dinnerController = new DinnerController(dinnerView, navView, model);
   var dishController = new DishController(dishView, navView, model);
 
   route('/', 'startView', startController);

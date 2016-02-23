@@ -15,8 +15,8 @@ var DinnerView = function (container, model) {
 		this.dinnerDate.html('');
 		this.totalPrice.html('');
 		this.dishesList.html('');
-		this.numberOfGuests.html(this.model.guests);
-		this.dinnerDate.html(this.model.date)
+		this.numberOfGuests.html(this.model.getNumberOfGuests());
+		this.dinnerDate.html(this.model.getFormattedDate())
 		this.totalPrice.html(this.model.getTotalMenuPrice() + ":-");
 		var dishes = this.model.getFullMenu();
 		for(var i=0;i<dishes.length;i++) {

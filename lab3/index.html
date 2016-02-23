@@ -33,42 +33,17 @@
           </div>
         </div>
 
-        <div class="toolbar toolbar-bottom router-view" id="toolbarView">
+        <div class="toolbar toolbar-bottom router-view" id="toolbarView" style="display:none;">
             <div class="toolbar-inner">
-                <a class="link">Date: </i><span id="tool-date"></span></a>
+                <a class="link">Date: <span id="tool-date"></span></a>
                 <a class="link">Guests: <span id="tool-guests"></span></a>
                 <a class="link">Price: <span id="tool-price"></span>:-</a>
             </div>
         </div>
         <div id="startView" class="page-content router-view">
           <div class="content-block">
-            <div class="list-block" id="ready-dinner">
-              <ul>
-                <li class="item-content">
-                  <div class="item-media"><i class="icon icon-form-calendar"></i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Date</div>
-                    <div class="item-after"><span id="dinnerDate"></span></div>
-                  </div>
-                </li>
-                <li class="item-content">
-                  <div class="item-media"><i class="icon icon-form-name"></i></div>
-                  <div class="item-inner">
-                    <div class="item-title">Guests</div>
-                    <div class="item-after"><span id="numberOfGuests"></span></div>
-                  </div>
-                </li>
-                <li class="item-content">
-                  <div class="item-media">sek</div>
-                  <div class="item-inner">
-                    <div class="item-title">Total price</div>
-                    <div class="item-after"><span id="totalPrice"></span></div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="content-block-title">Dishes</div>
-            <div id="dishesList"></div>
+            <h1>Welcome to Dinn3r Plann3r!</h1>
+            <p>Plan you dinner with this awesome app! Start by pressing the plus button below.</p>
           </div>
           <a href="#create" class="floating-button">
             <i class="icon icon-plus"></i>
@@ -190,6 +165,9 @@
             </div>
             <div class="content-block-title">Dishes</div>
             <div id="dishesList"></div>
+            <a href="#create" class="floating-button">
+              Edit
+            </a>
     		</div>
         <div id="dishView" class="page-content router-view">
             <div class="content-block"><div class="dish-img"></div></div>

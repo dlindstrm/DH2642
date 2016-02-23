@@ -9,8 +9,8 @@
 	display: inline-block;
 	color: #fff;
 }
-#dishView .floating-button {
-  bottom: 66px;
+.toolbar-bottom {
+  background-color: #aaa;
 }
 .floating-button {
   position: fixed;

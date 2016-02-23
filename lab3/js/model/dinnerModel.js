@@ -18,6 +18,10 @@ var DinnerModel = function() {
 		return this.date;
 	}
 
+	this.getFormattedDate = function() {
+		return this.date.toISOString().substring(0, 10);
+	}
+
 	this.setNumberOfGuests = function(num) {
 		this.guests = num;
 		this.notifyObservers();
@@ -124,13 +128,6 @@ var DinnerModel = function() {
 		for(var i = 0; i < this.observers.length; i++) {
 			this.observers[i](this, obj);
 		}
-	}
-
-	this.clear = function(obj) {
-		this.date = new Date();
-		this.guests = 1;
-		this.dishes = [];
-		this.notifyObservers();
 	}
 
 
