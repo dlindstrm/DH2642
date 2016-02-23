@@ -11,7 +11,15 @@ var ToolbarView = function (container, model) {
 	var populateView = function(model) {
 		_this.guests.html(model.guests);
 		_this.price.html(model.getTotalMenuPrice());
-		_this.date.html(model.getDate());
+		var date = model.getDate();
+		console.log(date);
+		var y = date.getFullYear();
+		var m = date.getMonth() + 1;
+		if(m<10){
+			m = "0"+m;
+		}
+		var d = date. getDate();
+		_this.date.html(y + '-' + m + '-' + d);
 	}
 
 	this.update = function(model, args) {
