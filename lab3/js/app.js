@@ -3,7 +3,6 @@ $(function() {
 
   var model = new DinnerModel();
 
-  var latestDinner = 0;
   route('/', 'startView', function () {
   	$('#startView').css('display', 'block');
     navView.setTitle("Dinn3r Plann3r");
@@ -19,9 +18,7 @@ $(function() {
 	});
 	route('dish', 'dishView', function (dishId) {
 		$('#dishView').css('display', 'block');
-	  dishView.populateView(dishId);
-    navView.hideButtonRight();
-    navView.showBackButton('#dinner/'+latestDinner);
+	  dishView.populateView(dishId);;
 	});
   route('create', 'createDinnerView', function() {
     $('#createDinnerView').css('display', 'block');
@@ -32,8 +29,8 @@ $(function() {
   route('selectDish', 'selectDishView', function(type) {
     $('#selectDishView').css('display', 'block');
     selectDishView.showTab(type);
-    navView.setButtonLeft('<a href="#create" class="link">Cancel</a>');
-    navView.setButtonRight('<a href="#create" class="link">Select</a>');
+    navView.setButtonLeft('<a href="#create" class="link">Back</a>');
+    navView.hideButtonRight();
   })
 
   var navView = new NavView($("#navigationView"));
@@ -43,11 +40,12 @@ $(function() {
 
   var dinnerView = new DinnerView($("#dinnerView"), navView);
 
-  var dishView = new DishView($("#dishView"), navView);
+  var dishView = new DishView($("#dishView"), navView, model);
 
   var createDinnerView = new CreateDinnerView($("#createDinnerView"), model);
 
   var selectDishView = new SelectDishView($("#selectDishView"), model);
 
   var createDinnerController = new CreateDinnerController(createDinnerView, model);
+  var selectDishController = new SelectDishController(dishView, model);
 });

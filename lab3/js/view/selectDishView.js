@@ -1,5 +1,6 @@
 //SelectDishView Object constructor
 var SelectDishView = function (container, model) {
+  this.container = container;
   this.startersCont = container.find("#starters ul");
   this.mainsCont = container.find("#mains ul");
   this.dessertsCont = container.find("#desserts ul");
@@ -11,7 +12,7 @@ var SelectDishView = function (container, model) {
   var createTab = function(models, parentDiv) {
     _.each(models, function(obj) {
       var li = $('<li></li>');
-      var div = $('<div></div>').addClass('item-content');
+      var link = $('<a></a>').attr('href', '#dish/' + obj.id).addClass('item-link item-content');
       var divMedia = $('<div></div>').addClass('item-media');
       var img = $('<img></img>').attr({'src': 'images/' + obj.image, 'width': '80'});
       var divInner = $('<div></div>').addClass('item-inner');
@@ -21,8 +22,8 @@ var SelectDishView = function (container, model) {
       divTitleRow.append(title, subtitle);
       divInner.append(divTitleRow);
       divMedia.append(img);
-      div.append(divMedia, divInner);
-      li.append(div);
+      link.append(divMedia, divInner);
+      li.append(link);
       parentDiv.append(li);
     })
   }

@@ -5,7 +5,8 @@ var CreateDinnerView = function (container, model) {
   this.guestInput = container.find("#guest-input");
   this.list = container.find(".media-list ul");
 
-  var populate = function(model) {
+  var _this = this;
+  this.populate = function(model) {
     for(dish in model.getFullMenu()) {
       var newItem = $("<li></li>").html(
       '<div class="item-content"><div class="item-inner"><div class="item-title-row">'+
@@ -14,12 +15,11 @@ var CreateDinnerView = function (container, model) {
           '</div>'+
           '<div class="item-subtitle">'+dish.type+'</div>'+
           '</div></div>');
-      this.list.prepend(newItem);
+      _this.list.prepend(newItem);
     }
   }
-
   this.update = function(model, args) {
-    populate(model);
+    _this.populate(model);
   }
 
   model.addObserver(this.update);
