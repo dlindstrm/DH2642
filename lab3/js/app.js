@@ -8,43 +8,27 @@ $(function() {
 
   var startView = new StartView($("#startView"), dinners);
 
-  var dinnerView = new DinnerView($("#dinnerView"), navView);
+  var dinnerView = new DinnerView($("#dinnerView"));
 
-  var dishView = new DishView($("#dishView"), navView, model);
+  var dishView = new DishView($("#dishView"), model);
 
   var createDinnerView = new CreateDinnerView($("#createDinnerView"), model);
 
   var selectDishView = new SelectDishView($("#selectDishView"), model);
 
   var createDinnerController = new CreateDinnerController(createDinnerView, navView, model);
-  var selectDishController = new SelectDishController(dishView, navView, model);
+  var selectDishController = new SelectDishController(selectDishView, navView, model);
+  var startController = new StartController(startView, navView, model);
+  var dinnerController = new DinnerController(dinnerView, navView, model);
+  var dishController = new DishController(dishView, navView, model);
 
-  route('/', 'startView', function () {
-  	$('#startView').css('display', 'block');
-    navView.setTitle("Dinn3r Plann3r");
-    navView.hideButtonRight();
-    navView.hideButtonLeft();
-  });
-	route('dinner', 'dinnerView', function (dinnerId) {
-		$('#dinnerView').css('display', 'block');
-	  dinnerView.setModel(_.find(dinners, function(dinner){ return dinner.id == dinnerId; }));
-    navView.hideButtonRight();
-    navView.showBackButton('#');
-	});
-	route('dish', 'dishView', function (dishId) {
-		$('#dishView').css('display', 'block');
-    $('#toolbarView').css('display', 'block');
-	  dishView.populateView(dishId);
-    navView.showBackButton("#selectDish/starters");
-    navView.hideButtonRight();
-	});
+
+
+  route('/', 'startView', startController);
+	route('dinner', 'dinnerView', dinnerController);
+	route('dish', 'dishView', dishController);
   route('create', 'createDinnerView', createDinnerController);
-  route('selectDish', 'selectDishView', function(type) {
-    $('#selectDishView').css('display', 'block');
-    $('#toolbarView').css('display', 'block');
-    selectDishView.showTab(type);
-    navView.setTitle('Select dish');
-    navView.showBackButton('#create');
-    navView.hideButtonRight();
-  })
+  route('selectDish', 'selectDishView', selectDishController);
+
+
 });
