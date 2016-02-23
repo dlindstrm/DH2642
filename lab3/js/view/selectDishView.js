@@ -5,6 +5,7 @@ var SelectDishView = function (container, model) {
   this.mainsCont = container.find("#mains ul");
   this.dessertsCont = container.find("#desserts ul");
   this.search = container.find("#search-input");
+  
   var createTab = function(models, parentDiv) {
     parentDiv.html("");
     _.each(models, function(obj) {
