@@ -4,7 +4,7 @@ $(function() {
 
   var toolbarView = new ToolbarView($("#toolbarView"), model);
   var startView = new StartView($("#startView"), model);
-  var dinnerView = new DinnerView($("#dinnerView"));
+  var dinnerView = new DinnerView($("#dinnerView"), model);
   var dishView = new DishView($("#dishView"), model);
   var createDinnerView = new CreateDinnerView($("#createDinnerView"), model);
   var selectDishView = new SelectDishView($("#selectDishView"), model);
@@ -20,4 +20,8 @@ $(function() {
 	route('dish', 'dishView', dishController);
   route('create', 'createDinnerView', createDinnerController);
   route('selectDish', 'selectDishView', selectDishController);
+
+  resetModel = function(model) {
+    console.log("reset");
+  }
 });

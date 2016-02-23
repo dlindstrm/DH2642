@@ -4,12 +4,9 @@ var SelectDishView = function (container, model) {
   this.startersCont = container.find("#starters ul");
   this.mainsCont = container.find("#mains ul");
   this.dessertsCont = container.find("#desserts ul");
-
-  this.starters = model.getAllDishes("starter");
-  this.mains = model.getAllDishes('main dish');
-  this.desserts = model.getAllDishes('dessert');
-
+  this.search = container.find("#search-input");
   var createTab = function(models, parentDiv) {
+    parentDiv.html("");
     _.each(models, function(obj) {
       var li = $('<li></li>');
       var link = $('<a></a>').attr('href', '#dish/' + obj.id).addClass('item-link item-content');
@@ -27,9 +24,18 @@ var SelectDishView = function (container, model) {
       parentDiv.append(li);
     })
   }
-  createTab(this.starters, this.startersCont);
-  createTab(this.mains, this.mainsCont);
-  createTab(this.desserts, this.dessertsCont);
+
+  this.createTabs = function(starters, mains, desserts) {
+    createTab(starters, this.startersCont);
+    createTab(mains, this.mainsCont);
+    createTab(desserts, this.dessertsCont);
+  }
+
+  this.createTabs(
+    model.getAllDishes("starter"),
+    model.getAllDishes("main dish"),
+    model.getAllDishes("dessert")
+  );
 
   this.showTab = function(type) {
     container.find(".active").removeClass("active");

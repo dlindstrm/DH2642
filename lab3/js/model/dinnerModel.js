@@ -126,6 +126,13 @@ var DinnerModel = function() {
 		}
 	}
 
+	this.clear = function(obj) {
+		this.date = new Date();
+		this.guests = 1;
+		this.dishes = [];
+		this.notifyObservers();
+	}
+
 
 
 

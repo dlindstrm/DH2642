@@ -9,12 +9,8 @@ var DinnerView = function (container, model) {
 	this.dishesList = container.find("#dishesList");
 	this.model = model;
 
-	this.setModel = function(model) {
-		this.model = model;
-		this.populateView();
-	}
 
-	this.populateView = function() {
+	this.populate = function(model) {
 		this.numberOfGuests.html('');
 		this.dinnerDate.html('');
 		this.totalPrice.html('');
@@ -45,7 +41,11 @@ var DinnerView = function (container, model) {
 
 		}
 	}
+	var _this = this;
+	this.update = function(model, args) {
+		_this.populate(model);
+	}
+	model.addObserver(this.update);
 
-	this.table = container.find("table");
 }
  
