@@ -19,7 +19,6 @@ var CreateDinnerView = function (container, model) {
   }
 
   this.update = function(model, args) {
-    console.log("poppp")
     populate(model);
   }
 
