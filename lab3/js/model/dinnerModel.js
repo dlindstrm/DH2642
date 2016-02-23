@@ -9,8 +9,18 @@ var DinnerModel = function(id, date, guests) {
 	this.dishes = [];
 	this.observers = [];
 
+	this.setDate = function(date) {
+		this.date = date;
+		this.notifyObservers();
+	}
+
+	this.getDate = function() {
+		return this.date;
+	}
+
 	this.setNumberOfGuests = function(num) {
 		this.guests = num;
+		this.notifyObservers();
 	}
 
 	// should return 
@@ -63,11 +73,13 @@ var DinnerModel = function(id, date, guests) {
 	this.addDishToMenu = function(id) {
 		this.removeDishFromMenu(id);
 		this.dishes.push(this.getDish(id));
+		this.notifyObservers();
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		this.dishes = _.reject(this.dishes, function(obj){ return obj.id == id });
+		this.notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -106,8 +118,8 @@ var DinnerModel = function(id, date, guests) {
 	}
 	
 	this.notifyObservers = function(obj) {
-		for(obs in observers) {
-			obs.update();
+		for(var i = 0; i < this.observers.length; i++) {
+			this.observers[i](this, obj);
 		}
 	}
 

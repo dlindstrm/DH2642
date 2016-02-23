@@ -3,7 +3,13 @@ var StartView = function (container, models) {
   
   // Get all the relevant elements of the view (ones that show data
     // and/or ones that responed to interaction)
-  this.list = container.find("ul")
+  
+  if(models.length == 0) {
+    return;
+  }
+  container.find(".content-block").remove();
+  this.mediaBlock = $("<div></div>").addClass("list-block media-list");
+  this.list = $("<ul></ul>")
   var _this = this;
   _.each(models, function(obj) {
     _this.list.append(
@@ -15,4 +21,6 @@ var StartView = function (container, models) {
         '<div class="item-subtitle">'+obj.guests+" ppl</div>"+
         "</div></a></li>"));
   })
+  this.mediaBlock.append(this.list);
+  container.append(this.mediaBlock);
 }

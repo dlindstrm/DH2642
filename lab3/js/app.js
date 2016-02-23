@@ -1,27 +1,7 @@
 $(function() {
   var dinners = [];
-	var dinner = new DinnerModel(4, "2016-02-12", 2);
-	dinner.addDishToMenu(1);
-	dinner.addDishToMenu(100);
-	dinner.addDishToMenu(200);
-  dinners.push(dinner);
-	var dinner1 = new DinnerModel(1, "2016-01-01", 6);
-  dinner1.addDishToMenu(2);
-  dinner1.addDishToMenu(101);
-  dinner1.addDishToMenu(201);
-  dinners.push(dinner1);
-	var dinner2 = new DinnerModel(2, "2016-01-02", 8);
-  dinner2.addDishToMenu(3);
-  dinner2.addDishToMenu(102);
-  dinner2.addDishToMenu(202);
-  dinners.push(dinner2);
 
-
- var model = new DinnerModel(3,"2016-03-22", 3);
- model.addObserver(function(model, args){
-
- });
-
+  var model = new DinnerModel();
 
   var latestDinner = 0;
   route('/', 'startView', function () {
@@ -61,11 +41,13 @@ $(function() {
 
   var startView = new StartView($("#startView"), dinners);
 
-  var dinnerView = new DinnerView($("#dinnerView"),navView);
+  var dinnerView = new DinnerView($("#dinnerView"), navView);
 
-  var dishView = new DishView($("#dishView"),navView);
+  var dishView = new DishView($("#dishView"), navView);
 
-  var createDinnerView = new CreateDinnerView($("#createDinnerView"), new DinnerModel());
+  var createDinnerView = new CreateDinnerView($("#createDinnerView"), model);
 
-  var selectDishView = new SelectDishView($("#selectDishView"), new DinnerModel());
+  var selectDishView = new SelectDishView($("#selectDishView"), model);
+
+  var createDinnerController = new CreateDinnerController(createDinnerView, model);
 });
