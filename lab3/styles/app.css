@@ -4,3 +4,8 @@
 /*.navbar, .subnavbar, .toolbar {
 	background: red;
 }*/
+
+.toolbar i.icon.icon-form-name {
+	display: inline-block;
+	color: #fff;
+}

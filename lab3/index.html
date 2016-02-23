@@ -33,11 +33,11 @@
           </div>
         </div>
 
-        <div class="toolbar toolbar-bottom" id="toolbarView">
+        <div class="toolbar toolbar-bottom router-view" id="toolbarView">
             <div class="toolbar-inner">
-                <span id="tool-date"></span>
-                <span id="tool-guests"></span>
-                <span id="tool-price"></span>
+                <span>Date: </i><span id="tool-date"></span></span>
+                <span>Guests: <span id="tool-guests"></span></span>
+                <span>Price: <span id="tool-price"></span>:-</span>
             </div>
         </div>
         <div id="startView" class="page-content router-view">
@@ -67,6 +67,16 @@
                   <div class="item-inner">
                     <div class="item-input">
                       <input id="guest-input" type="number" placeholder="# of guests">
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-content">
+                  <div class="item-media">sek</div>
+                  <div class="item-inner">
+                    <div class="item-input">
+                      <span id="dinner-totalprice" type="number"></span>
                     </div>
                   </div>
                 </div>
