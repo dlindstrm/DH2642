@@ -1,6 +1,6 @@
 //CreateDinnerView Object constructor
 var CreateDinnerView = function (container, model) {
-
+  this.model = model;
   this.dateInput = container.find("#date-input");
   this.guestInput = container.find("#guest-input");
   this.totalPrice = container.find("#dinner-totalprice");

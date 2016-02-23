@@ -1,10 +1,11 @@
 //CreateDinnerController Object constructor
 var CreateDinnerController = function (view, navView, model, dinnerCollection) {
   this.navView = navView;
-  view.dateInput.on("change", function() {
+  this.view = view;
+  this.view.dateInput.on("change", function() {
     model.setDate(new Date(view.dateInput.val()));
   })
-  view.guestInput.on("change", function() {
+  this.view.guestInput.on("change", function() {
     model.setNumberOfGuests(view.guestInput.val());
   })
   $(document).on("click", ".remove-dish", function(e){
@@ -20,7 +21,7 @@ var CreateDinnerController = function (view, navView, model, dinnerCollection) {
     this.navView.showBackButton('#');
     this.navView.buttonLeft.click(function(e) {
       e.preventDefault();
-      this.model = new DinnerModel();
+      resetModel("hej");
       window.location.hash = "#";
     });
 
