@@ -3,8 +3,7 @@ var DishView = function (container, nav, model) {
 	this.id = null;
 	this.nav = nav;
 	this.model = model;
-	this.cancelButton = $('<a id="cancel-button" href="#selectDish/starters" class="link">Cancel</a>');
-	this.selectButton = $('<a id="select-button" href="#create" class="link">Select</a>');
+	this.selectButton = container.find("#select-button");
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 	this.ingredientsList = container.find("#ingredientsList");
@@ -17,10 +16,8 @@ var DishView = function (container, nav, model) {
 		this.instructions.html('');
 		var dish = this.model.getDish(id);
 		this.nav.setTitle(dish.name);
-		this.nav.setButtonLeft(this.cancelButton);
-		this.nav.setButtonRight(this.selectButton);
 		this.img.html($('<img></img>').attr('src', 'images/' + dish.image));
-		
+
 		for(var i=0;i< dish.ingredients.length;i++) {
 			var li = $('<li></li>').addClass('item-content');
 			var divMedia = $('<div></<div>').addClass('item-media');

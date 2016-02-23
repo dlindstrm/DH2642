@@ -8,8 +8,12 @@ var CreateDinnerView = function (container, model) {
   this.dateInput.val(model.getDate().toISOString().substring(0, 10));
 
 
+  this.addNewDishButton = container.find("#add-new");
+
   var _this = this;
   this.populate = function(model) {
+    _this.list.html("");
+    _this.list.append(this.addNewDishButton);
     this.totalPrice.html(model.getTotalMenuPrice());
     this.guestInput.val(model.getNumberOfGuests());
     var dishes = model.getFullMenu();

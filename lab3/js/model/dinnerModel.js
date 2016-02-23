@@ -71,7 +71,7 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		this.removeDishFromMenu(id);
+		//this.removeDishFromMenu(id);
 		this.dishes.push(this.getDish(id));
 		console.log(this.dishes);
 		this.notifyObservers();
@@ -79,7 +79,10 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		this.dishes = _.reject(this.dishes, function(obj){ return obj.id == id });
+		this.dishes = _.reject(this.dishes, function(obj){
+			console.log(obj.id); 
+			return obj.id === id 
+		});
 		this.notifyObservers();
 	}
 
