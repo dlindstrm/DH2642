@@ -1,5 +1,5 @@
 //DinnerModel Object constructor
-var DinnerModel = function() {
+var DinnerModel = function(BigOvenRestService) {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
@@ -9,6 +9,8 @@ var DinnerModel = function() {
 	this.dishes = [];
 	this.observers = [];
 
+	this.BigOvenRestService = BigOvenRestService;
+	
 	this.setDate = function(date) {
 		this.date = date;
 		this.notifyObservers();
@@ -129,8 +131,6 @@ var DinnerModel = function() {
 			this.observers[i](this, obj);
 		}
 	}
-
-
 
 
 	// the dishes variable contains an array of all the 
