@@ -1,0 +1,25 @@
+.dish-img {
+	text-align: center;
+}
+/*.navbar, .subnavbar, .toolbar {
+	background: red;
+}*/
+
+.toolbar i.icon.icon-form-name {
+	display: inline-block;
+	color: #fff;
+}
+.toolbar-bottom {
+  background-color: #aaa;
+}
+.floating-button {
+  position: fixed;
+}
+
+  .demo-card-header-pic .card-header {
+    height: 40vw;
+    background-size: cover;
+    background-position: center;
+  }
+
+  
