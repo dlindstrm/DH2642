@@ -178,16 +178,24 @@
             </a>
     		</div>
         <div id="dishView" class="page-content router-view">
-            <div class="content-block"><div class="dish-img"></div></div>
-            <div class="content-block-title">Ingredients</div>
-            <div class="list-block">
-              <ul id="ingredientsList">
-              </ul>
+            <div id="loading-screen">
+              <div class="table"><div class="table-cell">
+                <div class="loader"></div>
+              </div></div>
             </div>
-            <div class="content-block-title">Instructions</div>
-            <div class="content-block inset">
-              <div class="content-block-inner">
-                <p id="instructions"></p>
+            <div id="error" class="content-block" style="display: none;"></div>
+            <div id="content">
+              <div class="content-block"><div class="dish-img"></div></div>
+              <div class="content-block-title">Ingredients</div>
+              <div class="list-block">
+                <ul id="ingredientsList">
+                </ul>
+              </div>
+              <div class="content-block-title">Instructions</div>
+              <div class="content-block inset">
+                <div class="content-block-inner">
+                  <p id="instructions"></p>
+                </div>
               </div>
             </div>
         </div>

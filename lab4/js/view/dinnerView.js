@@ -11,9 +11,13 @@ var DinnerView = function (container, model) {
 
 
 	this.populate = function(model, args) {
-		if(args.error || _.has(args, 'dishes') || _.has(args, 'dish')) {
+		if(!args) {
 			return;
 		}
+		if(args.data !== "dinner") {
+			return;
+		}
+		
 		this.numberOfGuests.html('');
 		this.dinnerDate.html('');
 		this.totalPrice.html('');

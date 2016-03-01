@@ -12,9 +12,13 @@ var CreateDinnerView = function (container, model) {
 
   var _this = this;
   this.populate = function(model, args) {
-    if(args.error || _.has(args, 'dishes') || _.has(args, 'dish')) {
+    if(!args) {
       return;
     }
+    if(args.data !== "dinner") {
+      return;
+    }
+    
     _this.list.html("");
     _this.list.append(this.addNewDishButton);
     this.totalPrice.html(model.getTotalMenuPrice());
@@ -36,6 +40,6 @@ var CreateDinnerView = function (container, model) {
     _this.populate(model, args);
   }
 
-  this.populate(model, {});
+  this.populate(model, { data: "dinner" });
   model.addObserver(this.update);
 }

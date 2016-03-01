@@ -13,7 +13,7 @@ var DinnerModel = function(BigOvenRestService) {
 
 	this.setDate = function(date) {
 		this.date = date;
-		this.notifyObservers({ error: false });
+		this.notifyObservers({ data: "dinner", error: false });
 	}
 
 	this.getDate = function() {
@@ -26,7 +26,7 @@ var DinnerModel = function(BigOvenRestService) {
 
 	this.setNumberOfGuests = function(num) {
 		this.guests = num;
-		this.notifyObservers({ error: false });
+		this.notifyObservers({ data: "dinner", error: false });
 	}
 
 	// should return 
@@ -80,7 +80,7 @@ var DinnerModel = function(BigOvenRestService) {
 		var _this = this; 
 		this.removeDishFromMenu(id);
 		this.dishes.push(this.getDish(id));
-		this.notifyObservers({ error: false });
+		this.notifyObservers({ data: "dinner", error: false });
 	}
 
 	//Removes dish from menu
@@ -88,7 +88,7 @@ var DinnerModel = function(BigOvenRestService) {
 		this.dishes = _.reject(this.dishes, function(obj){
 			return obj.id == id 
 		});
-		this.notifyObservers({ error: false });
+		this.notifyObservers({ data: "dinner", error: false });
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -103,6 +103,7 @@ var DinnerModel = function(BigOvenRestService) {
 	  	if(error) {
 	  		_this.notifyObservers(
 	  			{
+	  				data: "dishes",
 	  				error: true,
 	  				type: type,
 	  				filter: filter,
@@ -114,6 +115,7 @@ var DinnerModel = function(BigOvenRestService) {
 
 	  	_this.notifyObservers(
 	  		{
+	  			data: "dishes",
 	  			error: false,
 	  			type: type,
 	  			filter: filter,
@@ -131,6 +133,7 @@ var DinnerModel = function(BigOvenRestService) {
 	  	if(error) {
 	  		_this.notifyObservers(
 	  			{
+	  				data: "dish",
 	  				error: true,
 	  				id: id,
 	  				errorMessage: error
@@ -141,6 +144,7 @@ var DinnerModel = function(BigOvenRestService) {
 
 	  	_this.notifyObservers(
 	  		{
+	  			data: "dish",
 	  			error: false,
 	  			id: id,
 	  			dish: result

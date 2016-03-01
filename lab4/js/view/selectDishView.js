@@ -12,9 +12,10 @@ var SelectDishView = function (container, model) {
 
   var _this = this;
   var populate = function(model, args) {
-    console.log(args);
-
-    if(!args || _.has(args, 'dish')) {
+    if(!args) {
+      return;
+    }
+    if(args.data !== "dishes") {
       return;
     }
 

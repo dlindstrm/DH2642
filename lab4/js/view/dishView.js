@@ -7,12 +7,30 @@ var DishView = function (container, model) {
 	this.ingredientsList = container.find("#ingredientsList");
 	this.instructions = container.find("#instructions");
 	this.img = container.find(".dish-img");
+	this.loadingscreen = container.find("#loading-screen");
+	this.content = container.find("#content");
+	this.error = container.find("#error");
 
 	this.populate = function(model, args) {
-		if(!_.has(args, "dish")) {
+		if(!args) {
+			return;
+		}
+		if(args.data !== "dish") {
 			return;
 		}
 
+		this.loadingscreen.css("display", "none");
+		
+		if(args.error) {
+			this.error.html(args.errorMessage);
+			this.error.css("display", "block");
+			this.content.css("display", "none");
+			return;
+		}
+		
+		this.error.css("display", "none");
+		this.content.css("display", "block");
+		
 		this.ingredientsList.html('');
 		this.instructions.html('');
 		var dish = args.dish;
@@ -35,6 +53,7 @@ var DishView = function (container, model) {
 
 	this.getDish = function(id) {
 		this.model.getDish(id);
+		this.loadingscreen.css("display", "block");
 	}
 
 	var _this = this;
