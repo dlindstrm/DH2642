@@ -1,5 +1,6 @@
 $(function() {
-  var model = new DinnerModel();
+  var bigOvenRestService = new BigOvenRestService();
+  var model = new DinnerModel(bigOvenRestService);
   var navView = new NavView($("#navigationView"));
 
   var toolbarView = new ToolbarView($("#toolbarView"), model);
