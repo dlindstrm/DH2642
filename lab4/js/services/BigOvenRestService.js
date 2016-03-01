@@ -35,7 +35,7 @@ var BigOvenRestService = function() {
     });
   }
 
-  this.getById = function(id) {
+  this.get = function(id, callback) {
     var _this = this;
 
     if(this.getRequest) {
@@ -58,13 +58,25 @@ var BigOvenRestService = function() {
   }
 
   this.formatRecipeToWhatWeLike = function(recipe) {
+    var ingredients = [];
+    if(_.has(recipe, "Ingredients")) {
+      for(var i = 0; i < recipe.Ingredients.length; i++) {
+        var ingredient = recipe.Ingredients[i];
+        ingredients.push({
+          'name': ingredient.Name,
+          'quantity': Math.round(ingredient.Quantity*100)/100,
+          'unit':ingredient.Unit === null ? "piece" : ingredient.Unit,
+          'price': Math.round(ingredient.Quantity*100)/100
+        });
+      }
+    }
     return { 
       'id':recipe.RecipeID,
       'name':recipe.Title,
       'type':recipe.Category,
       'image': recipe.ImageURL,
       'description': recipe.Instructions !== null ? recipe.Instructions : "",
-      'ingredients': recipe.Ingredients !== null ? recipe.Ingredients : [] 
+      'ingredients': ingredients
     };
   }
 }
