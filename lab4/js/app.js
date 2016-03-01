@@ -21,7 +21,4 @@ $(function() {
   route('create', 'createDinnerView', createDinnerController);
   route('selectDish', 'selectDishView', selectDishController);
 
-  resetModel = function(model) {
-    console.log("reset");
-  }
 });
