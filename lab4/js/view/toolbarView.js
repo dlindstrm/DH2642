@@ -9,7 +9,7 @@ var ToolbarView = function (container, model) {
 
 
 	var populateView = function(model, args) {
-		if(args.error || _.has(args, 'dishes')) {
+		if(args.error || _.has(args, 'dishes') || _.has(args, 'dish')) {
 			return;
 		}
 		_this.guests.html(model.guests);

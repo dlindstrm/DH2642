@@ -126,11 +126,28 @@ var DinnerModel = function(BigOvenRestService) {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-	  /*for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}*/
+		var _this = this;
+	  this.BigOvenRestService.get(id, function(error, result) {
+	  	if(error) {
+	  		_this.notifyObservers(
+	  			{
+	  				error: true,
+	  				id: id,
+	  				errorMessage: error
+	  			}
+	  		);
+	  		return;
+	  	}
+
+	  	_this.notifyObservers(
+	  		{
+	  			error: false,
+	  			id: id,
+	  			dish: result
+	  		}
+	  	)
+	  	return;
+	  })
 	}
 
 	this.addObserver = function(observer) {

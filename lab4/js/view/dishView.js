@@ -1,6 +1,5 @@
 //DinnerView Object constructor
 var DishView = function (container, model) {
-	this.id = null;
 	this.model = model;
 	this.selectButton = container.find("#select-button");
 	// Get all the relevant elements of the view (ones that show data
@@ -9,12 +8,15 @@ var DishView = function (container, model) {
 	this.instructions = container.find("#instructions");
 	this.img = container.find(".dish-img");
 
-	this.populateView = function(id) {
-		this.id = id;
+	this.populate = function(model, args) {
+		if(!_.has(args, "dish")) {
+			return;
+		}
+
 		this.ingredientsList.html('');
 		this.instructions.html('');
-		var dish = this.model.getDish(id);
-		this.img.html($('<img></img>').attr('src', 'images/' + dish.image));
+		var dish = args.dish;
+		this.img.html($('<img></img>').attr('src', dish.image));
 
 		for(var i=0;i< dish.ingredients.length;i++) {
 			var li = $('<li></li>').addClass('item-content');
@@ -30,4 +32,14 @@ var DishView = function (container, model) {
 		}
 		this.instructions.append(dish.description);
 	}
+
+	this.getDish = function(id) {
+		this.model.getDish(id);
+	}
+
+	var _this = this;
+  this.update = function(model, args) {
+    _this.populate(model, args);
+  }
+  model.addObserver(this.update);
 }

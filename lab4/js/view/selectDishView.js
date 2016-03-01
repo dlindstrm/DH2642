@@ -14,7 +14,7 @@ var SelectDishView = function (container, model) {
   var populate = function(model, args) {
     console.log(args);
 
-    if(!args) {
+    if(!args || _.has(args, 'dish')) {
       return;
     }
 

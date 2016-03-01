@@ -1,6 +1,9 @@
 .dish-img {
 	text-align: center;
 }
+img {
+  max-width: 100%;
+}
 /*.navbar, .subnavbar, .toolbar {
 	background: red;
 }*/

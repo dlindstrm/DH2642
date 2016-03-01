@@ -12,7 +12,7 @@ var CreateDinnerView = function (container, model) {
 
   var _this = this;
   this.populate = function(model, args) {
-    if(args.error || _.has(args, 'dishes')) {
+    if(args.error || _.has(args, 'dishes') || _.has(args, 'dish')) {
       return;
     }
     _this.list.html("");
