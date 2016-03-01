@@ -8,15 +8,18 @@ var ToolbarView = function (container, model) {
 	var _this = this;
 
 
-	var populateView = function(model) {
+	var populateView = function(model, args) {
+		if(args.error || _.has(args, 'dishes')) {
+			return;
+		}
 		_this.guests.html(model.guests);
 		_this.price.html(model.getTotalMenuPrice());
 		_this.date.html(model.getFormattedDate());
 	}
 
 	this.update = function(model, args) {
-		populateView(model);
+		populateView(model, args);
 	}
-	populateView(model);
+	populateView(model, {});
 	model.addObserver(this.update);
 }

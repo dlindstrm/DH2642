@@ -10,7 +10,10 @@ var DinnerView = function (container, model) {
 	this.model = model;
 
 
-	this.populate = function(model) {
+	this.populate = function(model, args) {
+		if(args.error || _.has(args, 'dishes')) {
+			return;
+		}
 		this.numberOfGuests.html('');
 		this.dinnerDate.html('');
 		this.totalPrice.html('');
@@ -43,7 +46,7 @@ var DinnerView = function (container, model) {
 	}
 	var _this = this;
 	this.update = function(model, args) {
-		_this.populate(model);
+		_this.populate(model, args);
 	}
 	model.addObserver(this.update);
 
