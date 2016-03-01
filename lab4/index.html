@@ -86,7 +86,7 @@
             <div class="list-block media-list">
               <ul>
                 <li id="add-new">
-                  <a href="#selectDish/starters" class="item-content">
+                  <a href="#selectDish/appetizer" class="item-content">
                     <div class="item-inner">
                       <div class="item-title-row">
                         <div class="item-title">Add new dish</div>
@@ -99,6 +99,11 @@
             </div>
           </div>
         <div id="selectDishView" class="page-content router-view">
+          <div id="loading-screen">
+            <div class="table"><div class="table-cell">
+              <div class="loader"></div>
+            </div></div>
+          </div>
           <div class="list-block">
             <ul>
               <li>
@@ -114,23 +119,26 @@
           </div>
           <div class="content-block">
             <div class="buttons-row">
-              <a href="#selectDish/starters" class="tab-link active button">Starters</a>
-              <a href="#selectDish/mains" class="tab-link button">Mains</a>
-              <a href="#selectDish/desserts" class="tab-link button">Desserts</a>
+              <a id="appetizer-button" href="#selectDish/appetizer" class="tab-link button">Starters</a>
+              <a id="main-button" href="#selectDish/main" class="tab-link button">Mains</a>
+              <a id="dessert-button" href="#selectDish/dessert" class="tab-link button">Desserts</a>
             </div>
           </div>
           <div class="tabs">
-            <div id="starters" class="tab active">
+            <div id="appetizer" class="tab active">
+              <div id="error" style="display: none;" class="content-block"></div>
               <div class="list-block media-list">
                 <ul></ul>
               </div>
             </div>
-            <div id="mains" class="tab">
+            <div id="main" class="tab">
+              <div id="error" style="display: none;" class="content-block"></div>
               <div class="list-block media-list">
                 <ul></ul>
               </div>
             </div>
-            <div id="desserts" class="tab">
+            <div id="dessert" class="tab">
+              <div id="error" style="display: none;" class="content-block"></div>
               <div class="list-block media-list">
                 <ul></ul>
               </div>
@@ -192,7 +200,6 @@
     <script src="bower_components/Framework7/dist/js/framework7.min.js"></script>
 
 	<!-- The application JavaScript code -->
-	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/dinnerView.js"></script>
   <script src="js/view/toolbarView.js"></script>
@@ -208,6 +215,8 @@
   <script src="js/controller/dinnerController.js"></script>
   <script src="js/controller/dishController.js"></script>
   <script src="js/services/BigOvenRestService.js"></script>
+  <script src="js/app.js"></script>
+
 
   </body>
 </html>

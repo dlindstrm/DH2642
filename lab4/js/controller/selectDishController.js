@@ -3,13 +3,19 @@ var SelectDishController = function (view, navView, model) {
 	this.view = view;
 	this.navView = navView;
   var _this = this;
-  this.view.search.on("keydown", function() {
+  this.view.search.on("change", function() {
     var filter = $(this).val();
-    var starters = model.getAllDishes("starter", filter);
-    var mains = model.getAllDishes("main dish", filter);
-    var desserts = model.getAllDishes("dessert", filter);
-    _this.view.createTabs(starters, mains, desserts);
+    _this.view.loadingScreen.css("display", "block");
+    model.getAllDishes(_this.view.activeTab, filter);
   });
+
+  /*this.view.container.find(".tab-link").on("click", function(e) {
+    e.preventDefault();
+    _this.view.container.find(".button-fill").removeClass("button-fill");
+    $(this).addClass("button-fill");
+    window.location.href = $(this).attr("href");
+  })*/
+
   this.init = function(type){
   	$('#selectDishView').css('display', 'block');
     $('#toolbarView').css('display', 'block');
