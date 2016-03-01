@@ -15,7 +15,7 @@ var ToolbarView = function (container, model) {
 		if(args.data !== "dinner") {
 			return;
 		}
-		console.log(args);
+
 		_this.guests.html(model.guests);
 		_this.price.html(model.getTotalMenuPrice());
 		_this.date.html(model.getFormattedDate());
