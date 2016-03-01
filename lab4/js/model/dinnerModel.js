@@ -66,7 +66,7 @@ var DinnerModel = function(BigOvenRestService) {
 	}
 
 	this.getDishPrice = function(id) {
-		var dish = this.getDish(id);
+		var dish = _.find(this.dishes, function(dish){ return dish.id == id; });
 		var price = 0;
 		for(var i=0;i<dish.ingredients.length;i++) {
 			price = price + dish.ingredients[i].price * this.guests;
@@ -79,8 +79,14 @@ var DinnerModel = function(BigOvenRestService) {
 	this.addDishToMenu = function(id) {
 		var _this = this; 
 		this.removeDishFromMenu(id);
-		this.dishes.push(this.getDish(id));
-		this.notifyObservers({ data: "dinner", error: false });
+		var _this = this;
+		this.getDish(id, function(error, dish) {
+			if(error) {
+				return;
+			}
+			_this.dishes.push(dish);
+			_this.notifyObservers({ data: "dinner", error: false });
+		})
 	}
 
 	//Removes dish from menu
@@ -127,10 +133,13 @@ var DinnerModel = function(BigOvenRestService) {
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
+	this.getDish = function (id, callback) {
 		var _this = this;
 	  this.BigOvenRestService.get(id, function(error, result) {
 	  	if(error) {
+	  		if(callback) {
+	  			return callback("error", {});
+	  		}
 	  		_this.notifyObservers(
 	  			{
 	  				data: "dish",
@@ -141,7 +150,9 @@ var DinnerModel = function(BigOvenRestService) {
 	  		);
 	  		return;
 	  	}
-
+	  	if(callback) {
+	  		return callback(null, result);
+	  	}
 	  	_this.notifyObservers(
 	  		{
 	  			data: "dish",

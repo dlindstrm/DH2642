@@ -36,7 +36,7 @@ var DinnerView = function (container, model) {
 			}
 
 			this.dishesList.append('<div class="card demo-card-header-pic">'+
-				'<div style="background-image:url(images/'+dishes[i].image+')" valign="bottom" class="card-header color-white no-border">'+
+				'<div style="background-image:url('+dishes[i].image+')" valign="bottom" class="card-header color-white no-border">'+
 				dishes[i].name+'</div>'+
   				'<div class="card-content">'+
     			'<div class="card-content-inner">'+
