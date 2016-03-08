@@ -1,6 +1,8 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
-dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
+dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner,Navbar) {
+
+  
 
   $scope.isLoading = true;
   $scope.error = "";

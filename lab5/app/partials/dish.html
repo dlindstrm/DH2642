@@ -4,8 +4,8 @@
         <div class="loader"></div>
       </div></div>
     </div>
-    <div id="error" class="content-block" ng-show="errorMsg">{{ errorMsg }}</div>
-    <div id="content" ng-show="!isLoading">
+    <div id="error" class="content-block" ng-show="error">{{ errorMsg }}</div>
+    <div id="content" ng-show="!isLoading && !error">
       <div class="content-block">
       	<div class="dish-img"><img src="{{ dish.ImageURL }}" /></div>
       </div>

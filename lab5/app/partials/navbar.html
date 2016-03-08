@@ -1,0 +1,11 @@
+<div class="navbar-inner" ng-controller="NavbarCtrl">
+  <div id="button-left-container" class="left" ng-show="showBack">
+    <a id="button-left" href="{{ backContent }}" class="link icon-only">
+      <i class="icon icon-back"></i>
+    </a>
+  </div>
+  <div id="title" class="center">{{title}}</div>
+  <div id="button-right-container" class="right" ng-show="showRight">
+    <a id="button-right" ng-click="execRight()" class="link icon-only">{{ rightContent }}</a>
+  </div>
+</div>

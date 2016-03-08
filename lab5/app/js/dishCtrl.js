@@ -2,13 +2,16 @@
 // information for one dish
 dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	$scope.isLoading = true;
-	$scope.errorMsg = null;
+	$scope.errorMsg = "";
+	$scope.error = false;
 	$scope.search = function(id) {
 	   Dinner.Dish.get({id:id},function(data){
 	     $scope.dish=data;
 	     $scope.isLoading = false;
 	   },function(data){
 	     $scope.errorMsg = "There was an error";
+	     $scope.error = true;
+	     $scope.isLoading = false;
 	     console.log($scope.errorMsg);
 	   });
 	 }

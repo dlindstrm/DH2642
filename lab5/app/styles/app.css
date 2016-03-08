@@ -7,6 +7,10 @@ img {
 /*.navbar, .subnavbar, .toolbar {
   background: red;
 }*/
+
+.navbar .link:hover {
+  cursor: pointer;
+}
 .table {
   width: 100%;
   height: 100%;

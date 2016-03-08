@@ -1,6 +1,10 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
-dinnerPlannerApp.controller('CreateCtrl', function ($scope,Dinner) {
+dinnerPlannerApp.controller('CreateCtrl', function ($scope,Dinner,Navbar) {
+
+  Navbar.setTitle("Create Dinn3r");
+  Navbar.setBackButton("#home");
+  Navbar.setRightButton("Save");
 
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
 
