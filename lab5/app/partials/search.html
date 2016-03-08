@@ -1,5 +1,91 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
-
-<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
-not support it in free version) and list all the dishes that match the search. -->
+<div id="selectDishView" class="page-content router-view">
+  <div id="loading-screen" ng-show="isLoading">
+    <div class="table"><div class="table-cell">
+      <div class="loader"></div>
+    </div></div>
+  </div>
+  <div ng-hide="isLoading">
+    <div class="list-block">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-input">
+                <form ng-submit="search()"> <input id="search-input" ng-model="searchQuery" type="text" placeholder="Search"/></form>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <div class="buttons-row">
+        <a id="appetizer-button" ng-click="changeTab('appetizers')" class="tab-link button">Starters</a>
+        <a id="main-button" ng-click="changeTab('mains')" class="tab-link button">Mains</a>
+        <a id="dessert-button" ng-click="changeTab('desserts')" class="tab-link button">Desserts</a>
+      </div>
+    </div>
+    <div class="tabs">
+      <div id="appetizer" class="tab active" ng-show="showTab('appetizers')">
+        <div id="error" class="content-block"></div>
+        <div class="list-block media-list">
+          <ul>
+            <li ng-repeat="dish in appetizers">
+              <a ng-href="#dish/{{dish.id}}" class="item-link item-content">
+                <div class="item-media">
+                  <img ng-src="{{dish.ImageURL}}" width="80">
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{dish.Title}}</div>
+                    <div class="item-subtitle"></div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="main" class="tab active" ng-show="showTab('mains')">
+        <div id="error" class="content-block"></div>
+        <div class="list-block media-list">
+          <ul>
+            <li ng-repeat="dish in mains">
+              <a ng-href="#dish/{{dish.id}}" class="item-link item-content">
+                <div class="item-media">
+                  <img ng-src="{{dish.ImageURL}}" width="80">
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{dish.Title}}</div>
+                    <div class="item-subtitle"></div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="dessert" class="tab active" ng-show="showTab('desserts')">
+        <div id="error" class="content-block"></div>
+        <div class="list-block media-list">
+          <ul>
+            <li ng-repeat="dish in desserts">
+              <a ng-href="#dish/{{dish.id}}" class="item-link item-content">
+                <div class="item-media">
+                  <img ng-src="{{dish.ImageURL}}" width="80">
+                </div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{dish.Title}}</div>
+                    <div class="item-subtitle"></div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

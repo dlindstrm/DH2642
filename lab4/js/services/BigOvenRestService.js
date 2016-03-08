@@ -1,5 +1,5 @@
 var BigOvenRestService = function() {
-  var apiKey = "dvx7zJ0x53M8X5U4nOh6CMGpB3d0PEhH";
+  var apiKey = "H9n1zb6es492fj87OxDtZM9s5sb29rW3";
   var endpoint = "http://api.bigoven.com/";
   var searchRequest = null;
   var getRequest = null;

@@ -1,0 +1,60 @@
+<div id="createDinnerView" class="page-content router-view">
+  <div class="list-block">
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <input id="date-input" ng-model="date" ng-change="setDate(date)" type="date">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-input">
+              <input id="guest-input" ng-model="guests" ng-change="setNumberOfGuest(guests)" type="number" placeholder="# of guests">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media">sek</div>
+          <div class="item-inner">
+              <span><span id="dinner-totalprice">{{ getPrice() }}</span>:-</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="content-block-title">Dishes</div>
+  <div class="list-block media-list">
+    <ul>
+      <li ng-repeat="dish in getDishes()">
+        <div class="item-content">
+          <div class="item-inner">
+            <div class="item-title-row">
+              <div class="item-title">{{ dish.name +' '+dish.type }}</div>
+              <div class="item-after">{{ getDishPrice(dish.id) }} </div>
+            </div>
+            <div class="item-subtitle"><a class="remove-dish" ng-click="removeDish(dish.id)">Remove</a></div>
+          </div>
+        </div>
+      </li>
+      <li id="add-new">
+        <a href="#search" class="item-content">
+          <div class="item-inner">
+            <div class="item-title-row">
+              <div class="item-title">Add new dish</div>
+              <div class="item-after"><span class="badge bg-blue"><i class="icon icon-plus"></i></span></div>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
