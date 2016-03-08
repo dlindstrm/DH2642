@@ -33,6 +33,12 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner,Navbar) {
       getParams = {title_kw:type, any_kw:query};
     }
     Dinner.DishSearch.get(getParams,function(data){
+      if(!data.Results) {
+        $scope.error = "Api Key rate limit exceeded";
+        $scope.isLoading = false;
+        return;
+      }
+      $scope.error = "";
       populateTab(data.Results);
       $scope.isLoading = false;
     },function(data){

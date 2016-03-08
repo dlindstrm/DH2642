@@ -1,4 +1,5 @@
 <div id="navigationView" class="navbar" ng-include="'partials/navbar.html'"></div>
+<div class="toolbar toolbar-bottom router-view" ng-include="'partials/toolbar.html'" ng-controller="ToolbarCtrl"></div>
 <div id="selectDishView" class="page-content router-view">
   <div id="loading-screen" ng-show="isLoading">
     <div class="table"><div class="table-cell">
@@ -28,8 +29,8 @@
     </div>
     <div class="tabs">
       <div id="appetizer" class="tab active" ng-show="showTab('appetizers')">
-        <div id="error" class="content-block"></div>
-        <div class="list-block media-list">
+        <div id="error" ng-show="error != ''" class="content-block">{{error}}</div>
+        <div ng-show="error == ''" class="list-block media-list">
           <ul>
             <li ng-repeat="dish in appetizers">
               <a ng-href="#dish/{{dish.RecipeID}}" class="item-link item-content">
@@ -48,8 +49,8 @@
         </div>
       </div>
       <div id="main" class="tab active" ng-show="showTab('mains')">
-        <div id="error" class="content-block"></div>
-        <div class="list-block media-list">
+        <div id="error" ng-show="error != ''" class="content-block">{{error}}</div>
+        <div ng-show="error == ''" class="list-block media-list">
           <ul>
             <li ng-repeat="dish in mains">
               <a ng-href="#dish/{{dish.RecipeID}}" class="item-link item-content">
@@ -68,8 +69,8 @@
         </div>
       </div>
       <div id="dessert" class="tab active" ng-show="showTab('desserts')">
-        <div id="error" class="content-block"></div>
-        <div class="list-block media-list">
+        <div id="error" ng-show="error != ''" class="content-block">{{error}}</div>
+        <div ng-show="error == ''" class="list-block media-list">
           <ul>
             <li ng-repeat="dish in desserts">
               <a ng-href="#dish/{{dish.RecipeID}}" class="item-link item-content">

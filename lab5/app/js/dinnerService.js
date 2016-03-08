@@ -9,20 +9,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
   var guests = 1;
   var dishes = [];
 
-  this.setDate = function(_date) {
-    date = _date;
+  this.setDate = function(d) {
+    date = d;
   }
 
   this.getDate = function() {
     return date;
   }
 
-  this.getFormattedDate = function() {
-    return date.toISOString().substring(0, 10);
-  }
-
   this.setNumberOfGuests = function(num) {
-    console.log(num);
     guests = num;
   }
 
@@ -91,8 +86,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
     });
   }
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'}); 
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'0OV23011kU7B3VVVgxTTTIfdNXeTI3us'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'0OV23011kU7B3VVVgxTTTIfdNXeTI3us'}); 
 
 
   // Angular service needs to return an object that has all the

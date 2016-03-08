@@ -1,0 +1,45 @@
+<div id="dinnerView" class="page-content router-view">
+  <div class="list-block">
+    <ul>
+      <li class="item-content">
+        <div class="item-media"><i class="icon icon-form-calendar"></i></div>
+        <div class="item-inner">
+          <div class="item-title">Date</div>
+          <div class="item-after"><span id="dinnerDate">{{ getDate() | date:'yyyy-MM-dd'}}</span></div>
+        </div>
+      </li>
+      <li class="item-content">
+        <div class="item-media"><i class="icon icon-form-name"></i></div>
+        <div class="item-inner">
+          <div class="item-title">Guests</div>
+          <div class="item-after"><span id="numberOfGuests">{{getNumberOfGuests()}}</span></div>
+        </div>
+      </li>
+      <li class="item-content">
+        <div class="item-media">sek</div>
+        <div class="item-inner">
+          <div class="item-title">Total price</div>
+          <div class="item-after"><span id="totalPrice">{{getPrice()}}</span> :-</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="content-block-title">Dishes</div>
+  <div id="dishesList">
+  <div class="card demo-card-header-pic">
+    <div ng-repeat="dish in getDishes()" ng-style="background-image:url({{dish.ImageURL}})" valign="bottom" class="card-header color-white no-border">{{dish.Category}}</div>
+      <div class="card-content">
+        <div class="card-content-inner">
+          <p class="color-gray">null</p>
+          <p>
+            <span ng-repeat="ingredient in dish.Ingredients">{{ ingredient.Quantity + ' ' + ingredient.Unit + ' ' + ingredient.Name }}<br></span>
+          </p>
+        </div>
+      </div>
+      <div class="card-footer">{{ dish.Instructions }}</div>
+    </div>
+  </div>
+  <a href="#create" class="floating-button">
+    Edit
+  </a>
+</div>
