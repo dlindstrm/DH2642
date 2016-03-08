@@ -40,8 +40,8 @@
         <div class="item-content">
           <div class="item-inner">
             <div class="item-title-row">
-              <div class="item-title">{{ dish.name +' '+dish.type }}</div>
-              <div class="item-after">{{ getDishPrice(dish.id) }} </div>
+              <div class="item-title">{{ dish.Title +' ('+dish.Category + ')'}}</div>
+              <div class="item-after">{{ getDishPrice(dish.RecipeID) }} </div>
             </div>
             <div class="item-subtitle"><a class="remove-dish" ng-click="removeDish(dish.id)">Remove</a></div>
           </div>

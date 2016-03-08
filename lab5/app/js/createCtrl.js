@@ -27,6 +27,7 @@ dinnerPlannerApp.controller('CreateCtrl', function ($scope,Dinner,Navbar) {
   }
 
   $scope.getDishes = function() {
+    console.log(Dinner.getFullMenu());
     return Dinner.getFullMenu();
   }
 

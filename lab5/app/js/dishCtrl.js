@@ -2,7 +2,8 @@
 // information for one dish
 dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,Navbar) {
 	Navbar.setBackButton("#create");
-	Navbar.hideRightButton();
+		     Navbar.setRightButton("Select", $routeParams.dishId);
+
 	$scope.isLoading = true;
 	$scope.errorMsg = "";
 	$scope.error = false;
@@ -10,8 +11,8 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,Nav
 	var search = function(id) {
 		var navBar = Navbar;
 	   Dinner.Dish.get({id:id},function(data){
-	     $scope.dish=data;
-	     Navbar.setTitle("Hej");
+	     $scope.dish = data;
+	     Navbar.setTitle(data.Title);
 	     $scope.isLoading = false;
 	   },function(data){
 	     $scope.errorMsg = "There was an error";

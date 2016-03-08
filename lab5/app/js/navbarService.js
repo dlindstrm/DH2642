@@ -4,6 +4,7 @@ dinnerPlannerApp.factory('Navbar',function (Dinner) {
   this.backContent;
   this.showRight = false;
   this.rightContent;
+  var dishId = null;
 
   this.setTitle = function(title) {
     this.title = title;
@@ -24,10 +25,18 @@ dinnerPlannerApp.factory('Navbar',function (Dinner) {
   }
 
   this.hideRightButton = function(){
+    dishId = null;
   	this.showRight = false;
   }
 
-  this.setRightButton = function(content) {
+  this.setRightButton = function(content, id) {
+    console.log("setright")
+    if(id) {
+      dishId = id;
+    }
+    else {
+      dishId = null;
+    }
   	this.showRight = true;
   	this.rightContent = content;
   }
@@ -42,7 +51,8 @@ dinnerPlannerApp.factory('Navbar',function (Dinner) {
       }
   	}
   	else if (this.rightContent == "Select") {
-
+      Dinner.addDishToMenu(dishId);
+      window.location.hash = "#create";
   	}
   }
 

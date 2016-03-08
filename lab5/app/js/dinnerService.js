@@ -28,7 +28,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
 
   //Returns the dish that is on the menu for selected type 
   this.getSelectedDish = function(type) {
-    return _.find(dishes, function(dish){ return dish.type == type; });
+    return _.find(dishes, function(dish){ return dish.Category == type; });
   }
 
   //Returns all the dishes on the menu.
@@ -40,8 +40,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
   this.getAllIngredients = function() {
     var ingredients = [];
     for(i in dishes) {
-      for(j in dishes[i].ingredients) {
-        ingredients.push(dishes[i].ingredients[j]);
+      for(j in dishes[i].Ingredients) {
+        ingredients.push(dishes[i].Ingredients[j]);
       }
     }
     return ingredients;
@@ -52,16 +52,16 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
     var ingredients = this.getAllIngredients();
     var price = 0;
     for(i in ingredients) {
-      price += ingredients[i].price * guests;
+      price += ingredients[i].Quantity * guests;
     }
     return price;
   }
 
   this.getDishPrice = function(id) {
-    var dish = _.find(dishes, function(dish){ return dish.id == id; });
+    var dish = _.find(dishes, function(dish){ return dish.RecipeID == id; });
     var price = 0;
-    for(var i=0;i<dish.ingredients.length;i++) {
-      price = price + dish.ingredients[i].price * guests;
+    for(var i=0;i<dish.Ingredients.length;i++) {
+      price = price + dish.Ingredients[i].Quantity * guests;
     }
     return price;
   }
@@ -71,12 +71,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
   this.addDishToMenu = function(id) {
     this.removeDishFromMenu(id);
     var _this = this;
-    this.getDish(id, function(error, dish) {
-      if(error) {
-        return;
-      }
-      dishes.push(dish);
-    })
+    this.Dish.get({id:id}, function(data){
+       dishes.push(data)
+     },function(data){
+      console.log("Could not add dish to dinner, possible wrong id");
+     });
   }
 
   //Removes dish from menu
@@ -86,8 +85,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
     });
   }
 
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'0OV23011kU7B3VVVgxTTTIfdNXeTI3us'});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'0OV23011kU7B3VVVgxTTTIfdNXeTI3us'}); 
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'}); 
 
 
   // Angular service needs to return an object that has all the
