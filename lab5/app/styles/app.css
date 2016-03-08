@@ -7,7 +7,9 @@ img {
 /*.navbar, .subnavbar, .toolbar {
   background: red;
 }*/
-
+a {
+  cursor: pointer;
+}
 .navbar .link:hover {
   cursor: pointer;
 }

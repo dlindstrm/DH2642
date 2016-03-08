@@ -5,8 +5,11 @@ dinnerPlannerApp.controller('CreateCtrl', function ($scope,Dinner,Navbar) {
   Navbar.setTitle("Create Dinn3r");
   Navbar.setBackButton("#home");
   Navbar.setRightButton("Save");
-
+  $scope.guests = Dinner.getNumberOfGuests();
+  $scope.date = Dinner.getDate();
+  
   $scope.setNumberOfGuest = function(number){
+    console.log($scope.guests);
     Dinner.setNumberOfGuests(number);
   }
 
