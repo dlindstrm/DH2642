@@ -1,11 +1,11 @@
 <div id="dishView" ng-controller="DishCtrl" class="page-content router-view">
-    <!--<div id="loading-screen">
+    <div id="loading-screen" ng-show="isLoading">
       <div class="table"><div class="table-cell">
         <div class="loader"></div>
       </div></div>
     </div>
-    <div id="error" class="content-block" style="display: none;"></div>-->
-    <div id="content">
+    <div id="error" class="content-block" ng-show="errorMsg">{{ errorMsg }}</div>
+    <div id="content" ng-show="!isLoading">
       <div class="content-block">
       	<div class="dish-img"><img src="{{ dish.ImageURL }}" /></div>
       </div>
