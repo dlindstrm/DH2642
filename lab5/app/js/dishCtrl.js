@@ -1,12 +1,17 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
+dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,Navbar) {
+	Navbar.setBackButton("#create");
+	Navbar.hideRightButton();
 	$scope.isLoading = true;
 	$scope.errorMsg = "";
 	$scope.error = false;
-	$scope.search = function(id) {
+	this.navBar = Navbar;
+	var search = function(id) {
+		var navBar = Navbar;
 	   Dinner.Dish.get({id:id},function(data){
 	     $scope.dish=data;
+	     Navbar.setTitle("Hej");
 	     $scope.isLoading = false;
 	   },function(data){
 	     $scope.errorMsg = "There was an error";
@@ -15,7 +20,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 	     console.log($scope.errorMsg);
 	   });
 	 }
-	 $scope.search($routeParams.dishId);
+	 search($routeParams.dishId);
 
   
   // TODO in Lab 5: you need to get the dish according to the routing parameter

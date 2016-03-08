@@ -1,4 +1,5 @@
 dinnerPlannerApp.controller('NavbarCtrl', function ($scope,Dinner,Navbar) {
+	$scope.navbar = Navbar;
 	$scope.title = Navbar.getTitle();
 	$scope.backContent = Navbar.backContent;
 	$scope.showBack = Navbar.showBack;

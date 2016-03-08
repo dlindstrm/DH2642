@@ -7,6 +7,7 @@ dinnerPlannerApp.factory('Navbar',function (Dinner) {
 
   this.setTitle = function(title) {
     this.title = title;
+    console.log(this.title);
   }
 
   this.getTitle = function() {

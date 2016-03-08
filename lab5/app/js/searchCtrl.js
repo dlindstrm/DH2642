@@ -2,6 +2,9 @@
 // and search results
 dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner,Navbar) {
 
+  Navbar.setTitle("Select dish");
+  Navbar.setBackButton("#create");
+  Navbar.hideRightButton();
   
 
   $scope.isLoading = true;
