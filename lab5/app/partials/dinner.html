@@ -1,3 +1,4 @@
+<div id="navigationView" class="navbar" ng-include="'partials/navbar.html'"></div>
 <div id="dinnerView" class="page-content router-view">
   <div class="list-block">
     <ul>
@@ -19,20 +20,20 @@
         <div class="item-media">sek</div>
         <div class="item-inner">
           <div class="item-title">Total price</div>
-          <div class="item-after"><span id="totalPrice">{{getPrice()}}</span> :-</div>
+          <div class="item-after"><span id="totalPrice">{{getPrice() | number : 2}}</span> :-</div>
         </div>
       </li>
     </ul>
   </div>
   <div class="content-block-title">Dishes</div>
   <div id="dishesList">
-  <div class="card demo-card-header-pic">
-    <div ng-repeat="dish in getDishes()" ng-style="background-image:url({{dish.ImageURL}})" valign="bottom" class="card-header color-white no-border">{{dish.Category}}</div>
+  <div class="card demo-card-header-pic" ng-repeat="dish in getDishes()">
+    <div ng-style="{'background-image':'url({{dish.ImageURL}})'}" valign="bottom" class="card-header color-white no-border">{{dish.Title}}</div>
       <div class="card-content">
         <div class="card-content-inner">
-          <p class="color-gray">null</p>
+          <p class="color-gray">{{dish.Category}}</p>
           <p>
-            <span ng-repeat="ingredient in dish.Ingredients">{{ ingredient.Quantity + ' ' + ingredient.Unit + ' ' + ingredient.Name }}<br></span>
+            <span ng-repeat="ingredient in dish.Ingredients">{{ ingredient.Quantity | number : 2 }} {{ingredient.Unit + ' ' + ingredient.Name }}<br></span>
           </p>
         </div>
       </div>

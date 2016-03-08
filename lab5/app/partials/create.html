@@ -27,7 +27,7 @@
         <div class="item-content">
           <div class="item-media">sek</div>
           <div class="item-inner">
-              <span><span id="dinner-totalprice">{{ getPrice() }}</span>:-</span>
+              <span><span id="dinner-totalprice">{{ getPrice() | number : 2 }}</span>:-</span>
           </div>
         </div>
       </li>
@@ -41,9 +41,9 @@
           <div class="item-inner">
             <div class="item-title-row">
               <div class="item-title">{{ dish.Title +' ('+dish.Category + ')'}}</div>
-              <div class="item-after">{{ getDishPrice(dish.RecipeID) }} </div>
+              <div class="item-after">{{ getDishPrice(dish.RecipeID) | number : 2 }} </div>
             </div>
-            <div class="item-subtitle"><a class="remove-dish" ng-click="removeDish(dish.id)">Remove</a></div>
+            <div class="item-subtitle"><a class="remove-dish" ng-click="removeDish(dish.RecipeID)">Remove</a></div>
           </div>
         </div>
       </li>

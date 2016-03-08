@@ -81,7 +81,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
   //Removes dish from menu
   this.removeDishFromMenu = function(id) {
     dishes = _.reject(dishes, function(obj){
-      return obj.id == id 
+      return obj.RecipeID == id 
     });
   }
 

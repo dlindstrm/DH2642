@@ -1,5 +1,5 @@
   <div class="toolbar-inner">
     <a class="link">Date: <span id="tool-date">{{ getDate() | date:'yyyy-MM-dd'}}</span></a>
     <a class="link">Guests: <span id="tool-guests">{{getNumberOfGuests()}}</span></a>
-    <a class="link">Price: <span id="tool-price">{{getPrice()}}</span>:-</a>
+    <a class="link">Price: <span id="tool-price">{{getPrice() | number : 2 }}</span>:-</a>
   </div>
