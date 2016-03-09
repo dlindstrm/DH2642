@@ -1,8 +1,8 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
 dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,Navbar) {
-	Navbar.setBackButton("#create");
-		     Navbar.setRightButton("Select", $routeParams.dishId);
+	Navbar.setBackButton("#search");
+	Navbar.setRightButton("Select", $routeParams.dishId);
 
 	$scope.isLoading = true;
 	$scope.errorMsg = "";
