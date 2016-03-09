@@ -124,9 +124,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _,$cookieStore) {
   }
   else {
     dishesID = JSON.parse($cookieStore.get("dishes"));
-    for(id in dishesID) {
+    console.log(dishesID);
+    for(var i=0; i < dishesID.length; i++) {
+      var id = dishesID[i];
       this.Dish.get({id:id}, function(data){
-       dishes.push(data)
+       dishes.push(data);
       },function(data){
       console.log("Could not add dish to dinner, possible wrong id");
      });
