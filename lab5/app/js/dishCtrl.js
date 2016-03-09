@@ -9,7 +9,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner,Nav
 	$scope.error = false;
 	this.navBar = Navbar;
 	var search = function(id) {
-		var navBar = Navbar;
 	   Dinner.Dish.get({id:id},function(data){
 	     $scope.dish = data;
 	     Navbar.setTitle(data.Title);

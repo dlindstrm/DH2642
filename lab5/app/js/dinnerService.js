@@ -3,14 +3,21 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource, _) {
-
-  var date = new Date();
-  var guests = 1;
+dinnerPlannerApp.factory('Dinner',function ($resource, _,$cookieStore) {
+  var date;
+  var guests;
   var dishes = [];
+  var dishesID = [];
+
+
+
+
+
+
 
   this.setDate = function(d) {
     date = d;
+    $cookieStore.put("date", date);
   }
 
   this.getDate = function() {
@@ -19,6 +26,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
 
   this.setNumberOfGuests = function(num) {
     guests = num;
+    $cookieStore.put("guests", guests);
   }
 
   // should return 
@@ -73,6 +81,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
     var _this = this;
     this.Dish.get({id:id}, function(data){
        dishes.push(data)
+       dishesID.push(data.RecipeID);
+       $cookieStore.put("dishes",JSON.stringify(dishesID));
      },function(data){
       console.log("Could not add dish to dinner, possible wrong id");
      });
@@ -83,10 +93,45 @@ dinnerPlannerApp.factory('Dinner',function ($resource, _) {
     dishes = _.reject(dishes, function(obj){
       return obj.RecipeID == id 
     });
+    dishesID = _.reject(dishesID, function(obj){
+      return obj == id 
+    });
+    $cookieStore.put("dishes", JSON.stringify(dishesID));
   }
 
   this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'});
   this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'r02x0R09O76JMCMc4nuM0PJXawUHpBUL'}); 
+
+  if(!$cookieStore.get("date")) {
+    date = new Date();
+    $cookieStore.put("date", date);
+  }
+  else {
+    date = new Date($cookieStore.get("date"));
+  }
+
+  if(!$cookieStore.get("guests")) {
+    guests = 1;
+    $cookieStore.put("guests", guests);
+  }
+  else {
+    guests = $cookieStore.get("guests");
+  }
+
+  if(!$cookieStore.get("dishes")) {
+    dishesID = [];
+    $cookieStore.put("dishes", JSON.stringify(dishesID));
+  }
+  else {
+    dishesID = JSON.parse($cookieStore.get("dishes"));
+    for(id in dishesID) {
+      this.Dish.get({id:id}, function(data){
+       dishes.push(data)
+      },function(data){
+      console.log("Could not add dish to dinner, possible wrong id");
+     });
+    }
+  }
 
 
   // Angular service needs to return an object that has all the
